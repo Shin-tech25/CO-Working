@@ -1,16 +1,37 @@
 # Linux共通用のPlaybook
 # Playbook用の設定
-
+- name: Apacheのインストールおよび設定ファイルのコピー
+  hosts: linux
+  become: true
+  gather_facts: true
 # 前提としては、Ansibleユーザが設定されている状態（それ以外は全く設定されていない）
 
+# タスク
+  tasks:
 # ホスト名変更
+    - name: ホスト名変更
+    - hostname: {{ hostname }}
 
 # パッケージインストール
-
+# httpd, php, wget, vim, phthon39, firewalld
+    - name: パッケージ インストール
+    - yum:
+        name: "{{ packages }}"
+      vars:
+        packages:
+        - httpd
+        - php
+        - wget
+        - vim
+        - phthon39
+        - firewalld
 
 # SELinux無効化
+    - name: SELinux 無効化
+
 
 # Firewall有効化
+    - name: Firewall 有効化
 
-
-# 各種サービスの設定
+# SSHの設定
+    - name: SSHの設定
