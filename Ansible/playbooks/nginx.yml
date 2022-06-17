@@ -1,0 +1,20 @@
+---
+- name: Playbookチュートリアル
+  hosts: local_target
+  become: true
+  tasks:
+    - name: EPELリポジトリのインストール
+      yum:
+        name: epel-release
+        state: present
+
+    - name: Nginxのインストール
+      yum:
+        name: nginx
+        state: present
+
+    - name: Nginxサービスの起動と自動起動設定
+      service:
+        name: nginx
+        state: started
+        enabled: true

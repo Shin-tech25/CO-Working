@@ -1,0 +1,7 @@
+---
+- name: local_target playbook
+  hosts: all
+  become: yes
+  tasks:
+    - name: Hello World!!
+      command: echo "Hello World!!"

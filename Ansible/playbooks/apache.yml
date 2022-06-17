@@ -1,0 +1,27 @@
+---
+- name: Apacheのインストールおよび設定ファイルのコピー
+  hosts: local_target
+  become: yes
+  gather_facts: yes
+
+  tasks:
+    - name: Apacheの最新バージョンインストール
+      yum:
+        name: httpd
+        state: latest
+
+    - name: confファイルを編集する
+      copy:
+        src: /etc/ansible/files/httpd.conf
+        dest: /etc/httpd/conf/httpd.conf
+
+    - name: トップページの配置
+      copy:
+        src: /etc/ansible/files/index.html
+        dest: /var/www/html/index.html
+
+    - name: Apacheのサービス有効化
+      service:
+        name: httpd
+        state: started
+        enabled: yes

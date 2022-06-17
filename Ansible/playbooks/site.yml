@@ -1,0 +1,3 @@
+---
+- name: import other playbook
+  import_playbook: create_node.yml

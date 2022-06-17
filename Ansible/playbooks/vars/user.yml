@@ -1,0 +1,6 @@
+---
+username: alice
+group: users
+shell:
+  bash: /bin/bash
+  zsh: /bin/zsh

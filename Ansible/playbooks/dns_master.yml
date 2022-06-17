@@ -1,0 +1,27 @@
+---
+- name: 新しくノードを作る
+  hosts: dns
+  become: yes
+  gather_facts: yes
+
+  tasks:
+    # 言語設定
+    - name: BINDインストール
+      yum:
+        name: bind
+        state: latest
+
+    # DNSポート開放
+    - name: DNSポート開放
+      firewalld:
+        zone: public
+        service: dns
+        state: enabled
+        permanent: yes
+        immediate: yes
+
+    # namedサービス起動
+    - name: namedサービス起動
+      service:
+        name: named
+        state: started

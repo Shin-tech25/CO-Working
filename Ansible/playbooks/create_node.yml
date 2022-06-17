@@ -1,0 +1,47 @@
+---
+- name: 新しくノードを作る
+  hosts: dns
+  become: yes
+  gather_facts: yes
+
+  tasks:
+    # 言語設定
+    - name: ロケールを日本語に変更
+      command: localectl set-locale LANG=ja_JP.UTF-8
+
+    # SELinux無効化
+    - name: SELinux無効化
+      lineinfile:
+        path: /etc/selinux/config
+        regexp: "^SELINUX="
+        line: "SELINUX=disabled"
+
+    # sudo をパスワード無しで使えるように設定
+    - name: sudoers
+      lineinfile:
+        path: /etc/sudoers
+        regexp: "NOPASSWD: ALL"
+        line: "%wheel        ALL=(ALL)       NOPASSWD: ALL"
+        backup: yes
+
+    # RootでSSH接続出来ないようにする
+    - name: PermitRootLogin no
+      copy:
+        src: /etc/ansible/files/sshd_config
+        dest: /etc/ssh/sshd_config
+      notify: restart sshd
+
+    # 開発用パッケージインストール
+    - name: ensure a list of packages installed
+      yum:
+        name: "{{ packages }}"
+      vars:
+        packages:
+          - git
+          - wget
+
+  handlers:
+    - name: restart sshd
+      service:
+        name: sshd
+        state: restarted

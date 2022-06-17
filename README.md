@@ -11,4 +11,3 @@
 Ansibleによる、Infrastructure as Code。
 - Kubernetes/
 Kubernetesによる、コンテナオーケストレーション。
-

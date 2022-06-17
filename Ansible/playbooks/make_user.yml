@@ -1,0 +1,9 @@
+---
+- name: Ansible Playbook
+  hosts: all
+  become: yes
+  vars_files:
+    - vars/user.yml
+  tasks:
+    - name: Make User
+      user: name={{ username }} group={{ group }} shell={{ shell.bash }}

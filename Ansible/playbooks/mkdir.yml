@@ -1,0 +1,9 @@
+---
+- name: local_target playbook
+  hosts: node1
+  become: yes
+  tasks:
+    - name: Make Some Folder
+      file:
+        path: /root/test
+        state: directory
