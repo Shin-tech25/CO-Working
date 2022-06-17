@@ -4,6 +4,9 @@
 # roleに実際の処理を記述する。
 # roleにタグ付けを行うことで、局所的なPlaybook適用を可能にする。
 ---
+- name: import linux-common.yml
+  import_playbook: linux-common.yml
+
 - name: import manager.yml
   import_playbook: manager.yml
 
