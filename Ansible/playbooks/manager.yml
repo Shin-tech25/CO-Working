@@ -1,0 +1,6 @@
+# Manager用のPlaybook
+# 役割
+# Pukiwiki: ナレッジの集約、WorkSpace
+# Ansible:  Ansibleコントロールノード(Playbookをばら撒くためのホスト)
+# Kubernetes: Kubernetesコントロールノード
+# Bot:  Discord用Botや他アプリケーション連携用のBotが動くプラットフォーム
