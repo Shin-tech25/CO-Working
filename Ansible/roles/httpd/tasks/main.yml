@@ -18,6 +18,8 @@
     permanent: yes
     state: enabled
   ignore_errors: true
+  notify:
+    - restart firewalld
 
 - name: ファイアウォール穴あけ(https)
   firewalld:
@@ -25,3 +27,5 @@
     permanent: yes
     state: enabled
   ignore_errors: true
+  notify:
+    - restart firewalld
