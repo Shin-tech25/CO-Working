@@ -1,6 +1,11 @@
 ---
 # tasks file for firewalld
 # Firewall有効化
+- name: firewalld パッケージの追加
+  yum:
+    name: firewalld
+    state: latest
+
 - name: デフォルトゾーンをpublicゾーンに変更
   shell: firewall-cmd --set-default-zone=public
 
