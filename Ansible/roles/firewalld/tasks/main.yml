@@ -5,6 +5,7 @@
   yum:
     name: firewalld
     state: latest
+  notify: firewalld service start
 
 - name: デフォルトゾーンをpublicゾーンに変更
   shell: firewall-cmd --set-default-zone=public
@@ -16,7 +17,7 @@
     state: enabled
   ignore_errors: true
 
-- name: Firewall 有効化
+- name: Firewall 再起動
   service:
     name: firewalld
     state: restarted

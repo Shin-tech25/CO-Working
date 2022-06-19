@@ -1,11 +1,5 @@
 ---
 # handlers file for test_role
-- name: (2) SELinuxの無効化
-  selinux: state=disabled
-  register: selinux
-  listen:
-    - SELinux configuration
-
 - name: (3) SSHのポート番号の取得
   set_fact:
     ssh_port: "{{ hostvars[inventory_hostname].ansible_port if 'ansible_port' in hostvars[inventory_hostname] else 22 }}"

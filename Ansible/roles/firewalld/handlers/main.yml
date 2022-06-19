@@ -1,2 +1,9 @@
 ---
 # handlers file for test_role
+- name: firewalld service start
+  service:
+    name: firewalld
+    state: started
+    enabled: true
+  notify:
+    - firewalld service start

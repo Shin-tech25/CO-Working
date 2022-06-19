@@ -4,5 +4,9 @@
   yum:
     name: python3-libselinux
     state: latest
-  notify:
+
+- name: (2) SELinuxの無効化
+  selinux: state=disabled
+  register: selinux
+  listen:
     - SELinux configuration
