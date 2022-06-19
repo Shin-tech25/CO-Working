@@ -4,3 +4,12 @@
 # Ansible:  Ansibleコントロールノード(Playbookをばら撒くためのホスト)
 # Kubernetes: Kubernetesコントロールノード
 # Bot:  Discord用Botや他アプリケーション連携用のBotが動くプラットフォーム
+---
+- name: Manager用のPlaybook
+  hosts: manager
+  become: true
+  gather_facts: true
+
+  roles:
+    - role: httpd
+      tags: httpd

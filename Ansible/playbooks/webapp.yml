@@ -1,3 +1,8 @@
 # Web Application用のPlaybook
 # 役割
 # Web Application
+---
+- name: Web Application用のPlaybook
+  hosts: webapp
+  become: true
+  gather_facts: true

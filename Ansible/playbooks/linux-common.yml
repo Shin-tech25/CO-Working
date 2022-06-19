@@ -1,11 +1,11 @@
----
 # Linux共通用のPlaybook
 # Playbook用の設定
-- name: Apacheのインストールおよび設定ファイルのコピー
+# 前提としては、Ansibleユーザが設定されている状態（それ以外は全く設定されていない）
+---
+- name: Linuxの共通設定用のPlaybook
   hosts: linux
   become: true
   gather_facts: true
-# 前提としては、Ansibleユーザが設定されている状態（それ以外は全く設定されていない）
 
   roles:
     # ホスト名変更
