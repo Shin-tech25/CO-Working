@@ -6,12 +6,7 @@
   yum:
     name: "{{ packages }}"
     state: latest
-  vars:
-    packages:
-    - php
-    - wget
-    - vim
-    - python39
 
 - name: パッケージのアップデート
   shell: yum update -y
+  changed_when: false # 結果を常に okにする。

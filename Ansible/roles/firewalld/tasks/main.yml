@@ -15,6 +15,7 @@
 
 - name: デフォルトゾーンをpublicゾーンに変更
   shell: firewall-cmd --set-default-zone=public
+  changed_when: false # 結果を常に okにする shellモジュールのため。
 
 - name: SSH穴あけ # これが無いと最悪、SSHで繋げられずシステムが使えなくなる可能性がある為。
   firewalld:

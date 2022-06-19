@@ -5,5 +5,5 @@
 - name: sshd有効化
   service:
     name: sshd
-    state: restarted
+    state: started
     enabled: yes
