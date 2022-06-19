@@ -3,7 +3,7 @@
 # パッケージインストール
     # httpd, php, wget, vim, phthon39, firewalld
 - name: パッケージ インストール
-- yum:
+  yum:
     name: "{{ packages }}"
     state: latest
   vars:
