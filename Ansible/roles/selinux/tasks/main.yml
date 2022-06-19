@@ -2,7 +2,7 @@
 # tasks file for selinux
 - name: (1) SELinux用のPythonモジュールをインストール
   yum:
-    name: libselinux-python
+    name: python3-libselinux
     state: latest
   notify:
     - SELinux configuration
