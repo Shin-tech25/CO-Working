@@ -12,7 +12,7 @@
     - php
     - wget
     - vim
-    - phthon39
+    - python39
     - firewalld
 - name: パッケージのアップデート
   shell: yum update -y
