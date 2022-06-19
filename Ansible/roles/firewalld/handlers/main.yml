@@ -5,5 +5,5 @@
     name: firewalld
     state: started
     enabled: true
-  notify:
+  listen:
     - firewalld service start
