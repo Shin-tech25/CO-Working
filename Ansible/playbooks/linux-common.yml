@@ -1,3 +1,4 @@
+---
 # Linux共通用のPlaybook
 # Playbook用の設定
 - name: Apacheのインストールおよび設定ファイルのコピー
@@ -6,50 +7,23 @@
   gather_facts: true
 # 前提としては、Ansibleユーザが設定されている状態（それ以外は全く設定されていない）
 
-# タスク
-  tasks:
-# ホスト名変更
-    - name: ホスト名変更
-    - hostname: {{ hostname }}
+  roles:
+    # ホスト名変更
+    - role: change_hostname
+      tags: change_hostname
 
-# パッケージインストール
-# httpd, php, wget, vim, phthon39, firewalld
-    - name: パッケージ インストール
-    - yum:
-        name: "{{ packages }}"
-      vars:
-        packages:
-        - httpd
-        - php
-        - wget
-        - vim
-        - phthon39
-        - firewalld
+    # 共通パッケージインストール
+    - role: linux_common_packages
+      tags: linux_common_packages
 
-# SELinux無効化
-    - name: SELinux 無効化用のPythonモジュールをインストール
-      yum:
-        name: libselinux-python
-        state: latest
+    # firewalld有効化と設定
+    - role: firewalld
+      tags: firewalld
 
-    - name: SELinux 無効化
-      selinux:
-        state: disabled
-        register: selinux
+    # sshd有効化と設定
+    - role: sshd
+      tags: sshd
 
-    - name: SSHポート番号の取得
-      set_fact:
-        ssh_port: "{{ hostvars[inventory_hostname].ansible_port if 'ansible_port' in hostvars[inventory_hostname] else 22 }}"
-      when: selinux.reboot_required
-
-    - name: マシンのリブート
-      shell: "sleep 2 && reboot"
-      async: 1
-      poll: 0
-      when: selinux.reboot_required
-
-# Firewall有効化
-    - name: Firewall 有効化
-
-# SSHの設定
-    - name: SSHの設定
+    # SELinux 無効化と必要なら再起動
+    - role: selinux
+      tags: selinux
