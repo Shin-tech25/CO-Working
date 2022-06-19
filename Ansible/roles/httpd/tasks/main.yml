@@ -4,5 +4,24 @@
   yum:
     name: httpd
     state: latest
-  notify:
-    - apache configuration
+
+- name: httpd有効化
+  service:
+    name: httpd
+    state: restarted
+    enabled: yes
+  ignore_errors: true
+
+- name: ファイアウォール穴あけ(http)
+  firewalld:
+    service: http
+    permanent: yes
+    state: enabled
+  ignore_errors: true
+
+- name: ファイアウォール穴あけ(https)
+  firewalld:
+    service: https
+    permanent: yes
+    state: enabled
+  ignore_errors: true

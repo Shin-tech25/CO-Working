@@ -5,5 +5,20 @@
   yum:
     name: firewalld
     state: latest
-  notify:
-    - firewalld configuration
+
+- name: デフォルトゾーンをpublicゾーンに変更
+  shell: firewall-cmd --set-default-zone=public
+
+- name: SSH穴あけ # これが無いと最悪、SSHで繋げられずシステムが使えなくなる可能性がある為。
+  firewalld:
+    service: ssh
+    permanent: yes
+    state: enabled
+  ignore_errors: true
+
+- name: Firewall 有効化
+  service:
+    name: firewalld
+    state: restarted
+    enabled: yes
+  ignore_errors: true
