@@ -8,5 +8,5 @@
 - name: (2) SELinuxの無効化
   selinux: state=disabled
   register: selinux
-  listen:
+  notify:
     - SELinux configuration
