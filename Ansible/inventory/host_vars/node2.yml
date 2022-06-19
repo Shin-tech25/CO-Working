@@ -1,2 +1,3 @@
 ansible_host: 164.70.69.235
 ansible_user: ansible
+hostname: webapp001
