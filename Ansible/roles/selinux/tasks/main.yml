@@ -1,6 +1,8 @@
 ---
 # tasks file for selinux
 - name: (1) SELinux用のPythonモジュールをインストール
-  yum: name=libselinux-python state=installed
+  yum:
+    name: libselinux-python
+    state: latest
   notify:
     - SELinux configuration
