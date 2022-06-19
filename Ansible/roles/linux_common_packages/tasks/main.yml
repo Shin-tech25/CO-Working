@@ -8,11 +8,10 @@
     state: latest
   vars:
     packages:
-    - httpd
     - php
     - wget
     - vim
     - python39
-    - firewalld
+
 - name: パッケージのアップデート
   shell: yum update -y

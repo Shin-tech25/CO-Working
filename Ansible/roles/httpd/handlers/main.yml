@@ -1,2 +1,25 @@
 ---
 # handlers file for test_role
+- name: httpd有効化
+  service:
+    name: httpd
+    state: restarted
+    enabled: yes
+  listen:
+    - apache configuration
+
+- name: ファイアウォール穴あけ(http)
+  firewalld:
+      service: http
+      permanent: yes
+      state: enabled
+  listen:
+    - apache configuration
+
+- name: ファイアウォール穴あけ(https)
+  firewalld:
+      service: https
+      permanent: yes
+      state: enabled
+  listen:
+    - apache configuration
