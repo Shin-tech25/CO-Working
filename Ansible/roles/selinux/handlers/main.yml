@@ -15,14 +15,14 @@
   listen:
     - SELinux configuration
 
-- name: (5) マシンの停止を待ち合わせ
-  local_action: wait_for host={{ inventory_hostname }} port={{ ssh_port }} state=stopped
-  when: selinux.reboot_required
-  listen:
-    - SELinux configuration
+#- name: (5) マシンの停止を待ち合わせ
+#  local_action: wait_for host={{ inventory_hostname }} port={{ ssh_port }} state=stopped
+#  when: selinux.reboot_required
+#  listen:
+#    - SELinux configuration
 
-- name: (6) マシンの起動を待ち合わせ
-  local_action: wait_for host={{ inventory_hostname }} port={{ ssh_port }} state=started
-  when: selinux.reboot_required
-  listen:
-    - SELinux configuration
+#- name: (6) マシンの起動を待ち合わせ
+#  local_action: wait_for host={{ inventory_hostname }} port={{ ssh_port }} state=started
+#  when: selinux.reboot_required
+#  listen:
+#    - SELinux configuration

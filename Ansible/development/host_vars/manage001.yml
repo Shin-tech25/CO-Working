@@ -1,3 +1,0 @@
-ansible_host: localhost # 157.120.33.136 Ansibleコントロールノード
-ansible_user: ansible
-hostname: manage001
