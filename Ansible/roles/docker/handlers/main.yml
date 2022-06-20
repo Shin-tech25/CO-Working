@@ -1,2 +1,6 @@
 ---
 # handlers file for test_role
+- name: add_user_to_docker_group
+
+
+- name: restart_docker_daemon

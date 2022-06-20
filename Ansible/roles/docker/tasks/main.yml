@@ -1,2 +1,14 @@
 ---
-# tasks file for test_role
+# tasks file for docker
+# 参考：https://note.com/shift_tech/n/n880f71e8e03b
+- name: Dockerのインストールに必要なパッケージをインストールする
+
+- name: DockerリポジトリのGPGキーをシステムに追加する
+
+- name: DockerリポジトリをYUMリソースに追加する
+
+- name: yum updateを実行
+
+- name: Dockerインストール
+
+- meta: flush_handlers
