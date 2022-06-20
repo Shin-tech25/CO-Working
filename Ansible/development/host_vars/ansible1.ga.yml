@@ -1,0 +1,3 @@
+ansible_host: 164.70.93.220 # Ansibleコントロールノード
+ansible_user: ansible
+hostname: ansible1.ga

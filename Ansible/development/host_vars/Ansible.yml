@@ -1,3 +1,0 @@
-ansible_host: localhost # Ansibleコントロールノード
-ansible_user: ansible
-hostname: Ansible
