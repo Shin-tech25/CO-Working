@@ -21,7 +21,7 @@
 - name: Docker Service Start
   service:
     name: docker
-    status: started
+    state: started
     enabled: true
 
 - name: add_user_to_docker_group
