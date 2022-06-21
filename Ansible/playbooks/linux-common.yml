@@ -24,6 +24,10 @@
     - role: sshd
       tags: sshd
 
+    # dockerインストール
+    - role: docker
+      tags: docker
+
     # SELinux 無効化と必要なら再起動
     - role: selinux
       tags: selinux

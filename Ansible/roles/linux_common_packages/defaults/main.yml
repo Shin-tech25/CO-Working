@@ -5,3 +5,6 @@ packages:
   - wget
   - vim
   - python39
+  - gcc
+  - git
+  - yum-utils

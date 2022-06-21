@@ -8,5 +8,5 @@
     state: latest
 
 - name: パッケージのアップデート
-  shell: yum update -y
-  changed_when: false # 結果を常に okにする。
+  yum:
+    update_cache: yes
