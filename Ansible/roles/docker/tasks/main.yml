@@ -22,7 +22,7 @@
   service:
     name: docker
     status: started
-    enable: true
+    enabled: true
 
 - name: add_user_to_docker_group
   user:
