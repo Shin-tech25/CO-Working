@@ -6,7 +6,7 @@ on:
     tags:
       - test
 jobs: # learn-github-actions における、全てのジョブ
-  check-bats-version: # ジョブ名
+  check-bats-version2: # ジョブ名
     runs-on: ubuntu-latest  # ジョブを実行するための(runner)、GitHubでホストされている仮想マシンの指定
     steps:  # Each item nested under this section is a separate action or shell script.
       - uses: actions/checkout@v3 # 定義済みのactionsを使用
