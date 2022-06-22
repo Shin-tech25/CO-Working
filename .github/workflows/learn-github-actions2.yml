@@ -1,0 +1,17 @@
+name: learn-github-actions  # ワークフローの名前
+# トリガー この例では、全てのブランチにおけるpushでキックされる。
+# See https://docs.github.com/ja/actions/reference/workflow-syntax-for-github-actions#onpushpull_requestpull_request_targetpathspaths-ignore
+on:
+  push:
+    tags:
+      - test
+jobs: # learn-github-actions における、全てのジョブ
+  check-bats-version: # ジョブ名
+    runs-on: ubuntu-latest  # ジョブを実行するための(runner)、GitHubでホストされている仮想マシンの指定
+    steps:  # Each item nested under this section is a separate action or shell script.
+      - uses: actions/checkout@v3 # 定義済みのactionsを使用
+      - uses: actions/setup-node@v3 # 定義済みのactionsを使用
+        with: # 変数の指定
+          node-version: '14'  # Node.js のv14を使用
+      - run: npm install -g bats  # run は runner で実行されるshellと同義
+      - run: bats -v  # run は runner で実行されるshellと同義
