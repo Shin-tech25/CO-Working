@@ -2,7 +2,7 @@ name: ansible-playbook  # ワークフローの名前
 # トリガー この例では、全てのブランチにおけるpushでキックされる。
 # See https://docs.github.com/ja/actions/reference/workflow-syntax-for-github-actions#onpushpull_requestpull_request_targetpathspaths-ignore
 on:
-  pull_request:
+  push:
     paths:
       - 'Ansible/*'
 jobs:
