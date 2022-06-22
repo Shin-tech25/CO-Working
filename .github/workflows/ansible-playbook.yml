@@ -19,6 +19,9 @@ jobs:
         chmod 700 ~/.ssh/id_rsa
         eval $(ssh-agent -s)
         ssh-add ~/.ssh/id_rsa
-        ssh-keyscan -p 22 -H "your.domain.com" >> ~/.ssh/known_hosts # 22の場合は明記しなくても良い
+        ssh-keyscan -p 22 -H 164.70.93.220 >> ~/.ssh/known_hosts  # ansible1.ga
+        ssh-keyscan -p 22 -H 164.70.76.127 >> ~/.ssh/known_hosts  # pukiwiki.ga
+        ssh-keyscan -p 22 -H 164.70.76.72 >> ~/.ssh/known_hosts  # staging001.ga
+        ssh-keyscan -p 22 -H 164.70.70.103 >> ~/.ssh/known_hosts  # webapp001.ga
         cd ansible
         ansible-playbook -i hosts/staging site.yml --private-key ~/.ssh/id_rsa
