@@ -23,5 +23,5 @@ jobs:
         ssh-keyscan -p 22 -H 164.70.76.127 >> ~/.ssh/known_hosts  # pukiwiki.ga
         ssh-keyscan -p 22 -H 164.70.76.72 >> ~/.ssh/known_hosts  # staging001.ga
         ssh-keyscan -p 22 -H 164.70.70.103 >> ~/.ssh/known_hosts  # webapp001.ga
-        cd ansible
-        ansible-playbook -i hosts/staging site.yml --private-key ~/.ssh/id_rsa
+        cd Ansible/
+        ansible-playbook -i inventory/hosts.yml playbooks/site.yml --private-key ~/.ssh/id_rsa
