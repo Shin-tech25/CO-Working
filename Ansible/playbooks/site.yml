@@ -12,3 +12,6 @@
 
 - name: Staging用の設定
   import_playbook: staging.yml
+
+- name: Production用の設定
+  import_playbook: production.yml
