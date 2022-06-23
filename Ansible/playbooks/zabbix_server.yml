@@ -5,7 +5,7 @@
   gather_facts: true
 
   roles:
-    - role: common
-      tags: common
-    - role: server
-      tags: server
+    - role: zabbix_common
+      tags: zabbix_common
+    - role: zabbix_server
+      tags: zabbix_server
