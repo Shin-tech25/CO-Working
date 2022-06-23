@@ -1,13 +1,7 @@
 ---
-# handlers file for test_role
-- name: (3) SSHのポート番号の取得
-  set_fact:
-    ssh_port: "{{ hostvars[inventory_hostname].ansible_port if 'ansible_port' in hostvars[inventory_hostname] else 22 }}"
-  when: selinux.reboot_required
-  listen:
-    - SELinux configuration
+# handlers file for selinux
 
-- name: (4) マシンのリブート
+- name: マシンのリブート
   shell: "sleep 2 && reboot"
   async: 1
   poll: 0
@@ -15,14 +9,14 @@
   listen:
     - SELinux configuration
 
-#- name: (5) マシンの停止を待ち合わせ
-#  local_action: wait_for host={{ inventory_hostname }} port={{ ssh_port }} state=stopped
-#  when: selinux.reboot_required
-#  listen:
-#    - SELinux configuration
+- name: マシンの停止を待ち合わせ
+  local_action: wait_for host={{ inventory_hostname }} port=22 state=stopped
+  when: selinux.reboot_required
+  listen:
+    - SELinux configuration
 
-#- name: (6) マシンの起動を待ち合わせ
-#  local_action: wait_for host={{ inventory_hostname }} port={{ ssh_port }} state=started
-#  when: selinux.reboot_required
-#  listen:
-#    - SELinux configuration
+- name: マシンの起動を待ち合わせ
+  local_action: wait_for host={{ inventory_hostname }} port=22 state=started
+  when: selinux.reboot_required
+  listen:
+    - SELinux configuration
