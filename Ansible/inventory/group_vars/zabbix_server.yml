@@ -1,1 +1,1 @@
-zabbix_mysql_password="password"
+zabbix_mysql_password: "password"

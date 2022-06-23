@@ -7,3 +7,5 @@
   roles:
     - role: common
       tags: common
+    - role: server
+      tags: server
