@@ -7,8 +7,8 @@
 - name: Linuxの共通設定(all)
   import_playbook: linux-common.yml
 
-- name: WorkSpace用の設定(manager)
-  import_playbook: manager.yml
+- name: WorkSpace用の設定
+  import_playbook: pukiwiki.yml
 
-- name: WebApplication用の設定(webapp)
-  import_playbook: webapp.yml
+- name: Staging用の設定
+  import_playbook: staging.yml
