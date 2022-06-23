@@ -1,5 +1,9 @@
 - include_tasks: tasks/check.yml
 
+- name: disable selinux
+  selinux:
+   state: disabled
+
 - name: set hostname
   hostname:
     name: "{{ inventory_hostname }}"

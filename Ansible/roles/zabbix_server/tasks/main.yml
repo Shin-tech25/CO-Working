@@ -56,7 +56,7 @@
 
 - name: check to exist zabbix table. ignore status is OK.
   shell: mysql -u root -s zabbix -e "select count(*) from users"
-  ignore_errors: yes
+  ignore_errors: true
   register: count_users
 - debug: var=count_users
 
