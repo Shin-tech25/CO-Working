@@ -1,0 +1,11 @@
+---
+- name: Zabbix Agent用のPlaybook
+  hosts: zabbix_agent
+  become: true
+  gather_facts: true
+
+  roles:
+    - role: zabbix_common
+      tags: zabbix_common
+    - role: zabbix_agent
+      tags: zabbix_agent

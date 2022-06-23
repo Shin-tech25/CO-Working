@@ -7,8 +7,20 @@
 - name: Linuxの共通設定(all)
   import_playbook: linux-common.yml
 
-- name: WorkSpace用の設定(manager)
-  import_playbook: manager.yml
+- name: WorkSpace用の設定
+  import_playbook: pukiwiki.yml
 
-- name: WebApplication用の設定(webapp)
-  import_playbook: webapp.yml
+- name: Ansibleサーバ用の設定
+  import_playbook: ansible.yml
+
+- name: Staging用の設定
+  import_playbook: staging.yml
+
+- name: Production用の設定
+  import_playbook: production.yml
+
+- name: Zabbix server用の設定
+  import_playbook: zabbix_server.yml
+
+- name: Zabbix agent用の設定
+  import_playbook: zabbix_agent.yml

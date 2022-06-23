@@ -28,6 +28,8 @@
     - role: docker
       tags: docker
 
+    # Zabbixエージェントインストール
+
     # SELinux 無効化と必要なら再起動
     - role: selinux
       tags: selinux
