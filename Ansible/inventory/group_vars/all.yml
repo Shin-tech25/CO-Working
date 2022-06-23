@@ -1,2 +1,2 @@
 timezone: "Asia/Tokyo"
-zabbix_server_ip: ""
+zabbix_server_ip: "164.70.65.194"
