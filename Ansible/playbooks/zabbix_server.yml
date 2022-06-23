@@ -1,0 +1,9 @@
+---
+- name: Zabbix Server用のPlaybook
+  hosts: zabbix_server
+  become: true
+  gather_facts: true
+
+  roles:
+    - role: common
+      tags: common
