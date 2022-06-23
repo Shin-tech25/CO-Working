@@ -31,5 +31,5 @@
     # Zabbixエージェントインストール
 
     # SELinux 無効化と必要なら再起動
-    - role: selinux
-      tags: selinux
+    #- role: selinux
+    #  tags: selinux
