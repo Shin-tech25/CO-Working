@@ -1,4 +1,4 @@
-- include: tasks/check.yml
+- include_tasks: tasks/check.yml
 
 - name: set firewall http.service
   firewalld:
@@ -70,7 +70,7 @@
     state=present
     backrefs=no
     regexp='date.timezone'
-    line='php_value[date.timezone] = Asia/Tokyo' 
+    line='php_value[date.timezone] = Asia/Tokyo'
   notify:
     - restart php-fpm
 
@@ -104,4 +104,3 @@
     name: zabbix-server
     state: started
     enabled: yes
-

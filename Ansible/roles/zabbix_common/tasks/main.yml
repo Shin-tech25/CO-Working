@@ -1,8 +1,4 @@
-- include: tasks/check.yml
-
-- name: disable selinux
-  selinux:
-   state: disabled
+- include_tasks: tasks/check.yml
 
 - name: set hostname
   hostname:
