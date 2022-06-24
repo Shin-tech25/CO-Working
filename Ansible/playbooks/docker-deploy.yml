@@ -2,10 +2,15 @@
   hosts: "{{ docker_deploy_host }}"
   become: true
   gather_facts: true
-  tasks:
 
-    - name: docker pull images
-      shell: docker pull "{{ docker_image }}"
+  vars:
+    docker_host_port: "{{ docker_host_port }}"
+    docker_container_port: "{{ docker_container_port }}"
+    docker_image: "{{ docker_image }}"
 
-    - name: docker container run
-      shell: docker run -d -p "{{ docker_host_port }}":"{{ docker_container_port }}" "{{ docker_image }}"
+  roles:
+    - role: docker_pull_image
+      tags: docker_pull_image
+
+    - role: docker_container_run
+      tags: docker_container_run
