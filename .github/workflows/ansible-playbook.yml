@@ -4,7 +4,7 @@ name: ansible-playbook  # ワークフローの名前
 on:
   push:
     paths:
-      - 'Ansible/*'
+      - 'Ansible/**'
 jobs:
   ansible-playbook:
     runs-on: ubuntu-latest

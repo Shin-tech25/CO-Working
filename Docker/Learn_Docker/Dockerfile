@@ -1,6 +1,7 @@
-FROM ruby:2.7
+FROM alpine:3.10
 
-RUN mkdir /var/www/
-COPY main.rb /var/www
+# アクションのリポジトリからコードファイルをコンテナのファイルシステムパス '/' にコピーする
+COPY entrypoint.sh /entrypoint.sh
 
-CMD ["ruby", "/var/www/main.rb"]
+# dockerコンテナが起動する際に実行されるコードファイル（'entrypoint.sh'）
+ENTRYPOINT [ "/entrypoint.sh" ]
