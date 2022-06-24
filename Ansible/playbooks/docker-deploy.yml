@@ -1,8 +1,8 @@
 - name: Docker Deploy
-  hosts: "{{ docker-deploy-host }}"
+  hosts: "{{ docker_deploy_host }}"
   become: true
   gather_facts: true
-
   tasks:
+
     - name: docker pull images
-      shell: docker pull "{{ docker-image }}"
+      shell: docker pull "{{ docker_image }}"
