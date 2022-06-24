@@ -19,8 +19,8 @@
 - name: Production用の設定
   import_playbook: production.yml
 
-- name: Zabbix server用の設定
-  import_playbook: zabbix_server.yml
+# - name: Zabbix server用の設定
+  #import_playbook: zabbix_server.yml
 
-- name: Zabbix agent用の設定
-  import_playbook: zabbix_agent.yml
+# - name: Zabbix agent用の設定
+  #import_playbook: zabbix_agent.yml
