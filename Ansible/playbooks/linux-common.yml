@@ -25,8 +25,8 @@
       tags: sshd
 
     # dockerインストール
-    - role: docker
-      tags: docker
+    - role: install_docker
+      tags: install_docker
 
     # Zabbixエージェントインストール
 
