@@ -1,4 +1,4 @@
 ---
 # tasks file for docker container stop
 - name: docker container stop
-  shell: docker container stop "{{ docker_image }}"
+  shell: docker container stop "{{ docker_container_name }}"
