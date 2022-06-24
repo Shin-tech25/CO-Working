@@ -1,7 +1,7 @@
 on:
   push:
     paths:
-      - 'Docker/SimpleWebApp/**'
+      - 'Docker/JP_Portfolio_Visualizer/**'
 
 jobs:
   CI:
@@ -22,10 +22,11 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
-         context: Docker/SimpleWebApp/
-         file:  Docker/SimpleWebApp/Dockerfile
+         context: Docker/JP_Portfolio_Visualizer/
+         file:  Docker/JP_Portfolio_Visualizer/Dockerfile
          push: true
-         tags:  ${{ secrets.DOCKER_HUB_USERNAME }}/simplewebapp:latest
+         tags:  ${{ secrets.DOCKER_HUB_USERNAME }}/jp_portfolio_visualizer:latest
+
   CD:
     runs-on: ubuntu-latest
     steps:
@@ -41,4 +42,4 @@ jobs:
         ssh-add ~/.ssh/id_rsa
         ssh-keyscan -p 22 -H 164.70.76.72 >> ~/.ssh/known_hosts  # staging001.ga
         cd Ansible/
-        ansible-playbook -i inventory/hosts.yml playbooks/docker-deploy.yml --private-key ~/.ssh/id_rsa --extra-vars 'docker_deploy_host=staging001.ga docker_image="${{ secrets.DOCKER_HUB_USERNAME }}/simplewebapp:latest" docker_host_port=80 docker_container_port=2000 docker_container_name=my_container'
+        ansible-playbook -i inventory/hosts.yml playbooks/docker-deploy.yml --private-key ~/.ssh/id_rsa --extra-vars 'docker_deploy_host=staging001.ga docker_image="${{ secrets.DOCKER_HUB_USERNAME }}/jp_portfolio_visualizer:latest" docker_host_port=80 docker_container_port=80 docker_container_name=jp_portfolio_visualizer'
