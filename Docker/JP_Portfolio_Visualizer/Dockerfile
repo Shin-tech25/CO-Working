@@ -5,8 +5,8 @@ FROM node:14
 #RUN yum install net-tools
 
 #ファイル追加
-COPY d3.v4.min.js  /tmp
-COPY index.html  /tmp
+COPY ./d3.v4.min.js  /home/centos/
+COPY ./index.html  /home/centos/
 
 #specify port
 EXPOSE 80
