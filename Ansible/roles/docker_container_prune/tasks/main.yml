@@ -1,0 +1,4 @@
+---
+# tasks file for docker image prune
+- name: docker container prune
+  shell: docker container prune
