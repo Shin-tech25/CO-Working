@@ -8,4 +8,4 @@
       shell: docker pull "{{ docker_image }}"
 
     - name: docker container run
-      shell: docker run -d -p "{{ docker_host_port }}":"{{ docker_container_port }}" simplewebapp
+      shell: docker run -d -p "{{ docker_host_port }}":"{{ docker_container_port }}" "{{ docker_image }}"
