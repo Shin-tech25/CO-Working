@@ -5,7 +5,7 @@ FROM node:14
 #RUN yum install net-tools
 
 #ファイル追加
-COPY etcs  /home/centos/etcs
+COPY . /home/centos/
 
 
 #specify port
