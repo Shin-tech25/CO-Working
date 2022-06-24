@@ -26,7 +26,7 @@
 
 - name: add_user_to_docker_group
   user:
-    name: "{{ ansible_user_id }}"
+    name: centos      # docker実行ユーザ
     groups: docker
     append: yes
   notify:
