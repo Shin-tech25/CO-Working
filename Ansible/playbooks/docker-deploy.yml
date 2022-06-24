@@ -3,11 +3,6 @@
   become: true
   gather_facts: true
 
-  vars:
-    docker_host_port: "{{ docker_host_port }}"
-    docker_container_port: "{{ docker_container_port }}"
-    docker_image: "{{ docker_image }}"
-
   roles:
     - role: docker_pull_image
       tags: docker_pull_image
