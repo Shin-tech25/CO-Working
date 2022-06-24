@@ -7,6 +7,9 @@
     - role: docker_image_prune
       tags: docker_image_prune
 
+    - role: docker_container_stop
+      tags: docker_container_stop
+
     - role: docker_container_prune
       tags: docker_container_prune
 
