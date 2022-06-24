@@ -4,9 +4,11 @@ FROM node:14
 # RUN apt install ~~~
 #RUN yum install net-tools
 
-#ファイル追加
-COPY . /home/centos/
+ARG project_dir=/home/centos/react
+WORKDIR $project_dir
 
+#ファイル追加
+COPY . ${project_dir}
 
 #specify port
 EXPOSE 80
