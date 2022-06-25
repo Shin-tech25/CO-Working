@@ -13,6 +13,7 @@ FROM node:14
 RUN apt-get update
 RUN apt-get install -y curl
 RUN apt-get install -y nginx
+#runtest
 
 ARG project_dir=/home/node
 WORKDIR $project_dir
