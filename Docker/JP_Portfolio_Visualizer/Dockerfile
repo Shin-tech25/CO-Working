@@ -3,6 +3,10 @@ FROM node:14
 # 必要なパッケージがある場合インストール
 # RUN apt install ~~~
 #RUN yum install net-tools
+# system update
+RUN yum -y update && yum clean all
+RUN yum install -y httpd
+
 
 ARG project_dir=/home/centos/react
 WORKDIR $project_dir
