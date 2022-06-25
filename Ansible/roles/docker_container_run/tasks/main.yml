@@ -1,4 +1,4 @@
 ---
 # tasks file for docker container run
 - name: docker container run
-  shell: docker run -d -p "{{ docker_host_port }}":"{{ docker_container_port }}" --name "{{ docker_container_name }}" "{{ docker_image }}"
+  shell: docker run -d -it -p "{{ docker_host_port }}":"{{ docker_container_port }}" --name "{{ docker_container_name }}" "{{ docker_image }}"

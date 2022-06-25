@@ -11,5 +11,9 @@ WORKDIR $project_dir
 #$koment
 COPY . ${project_dir}
 
+ADD ./addtest.txt ./app
+
 #specify port
 EXPOSE 80
+
+CMD ["/bin/bash"]
