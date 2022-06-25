@@ -15,3 +15,5 @@ ADD ./addtest.txt ./app
 
 #specify port
 EXPOSE 80
+
+CMD ["/bin/bash"]
