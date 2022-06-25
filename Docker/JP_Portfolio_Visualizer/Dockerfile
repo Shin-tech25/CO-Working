@@ -19,10 +19,8 @@ ARG project_dir=/home/node
 WORKDIR $project_dir
 
 #ファイル追加
-#$koment
-COPY . ${project_dir}
+COPY etcs ${project_dir}
 
-#ADD ./addtest.txt ./app
 
 #specify port
 #EXPOSE 80
