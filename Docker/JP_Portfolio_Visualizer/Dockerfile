@@ -8,6 +8,7 @@ ARG project_dir=/home/centos/react
 WORKDIR $project_dir
 
 #ファイル追加
+#$koment
 COPY . ${project_dir}
 
 #specify port
