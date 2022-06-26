@@ -1,7 +1,7 @@
 on:
   push:
     paths:
-      - 'Docker/react-doco-app/**'
+      - 'Docker/react-todo-app/**'
 
 jobs:
   CI:
