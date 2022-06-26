@@ -10,7 +10,7 @@ WORKDIR $project_dir
 
 #ファイル追加
 COPY etcs ${project_dir}
-
+#q
 
 #specify port
 #EXPOSE 80
