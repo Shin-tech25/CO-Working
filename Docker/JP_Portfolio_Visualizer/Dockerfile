@@ -4,6 +4,7 @@ RUN apt-get install -y curl
 RUN apt-get install -y nginx
 RUN apt-get install -y vi
 RUN apt-get install -y pip
+RUN apt-get install -y tf2
 
 #runtest
 
