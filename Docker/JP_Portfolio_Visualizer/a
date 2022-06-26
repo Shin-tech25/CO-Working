@@ -37,3 +37,17 @@ FROM node:17.2
 
 WORKDIR /usr/src/app/
 CMD npm install -g create-react-app
+
+
+
+
+
+
+
+
+
+
+
+
+
+docker container exec -it  jp_portfolio_visualizer   bash

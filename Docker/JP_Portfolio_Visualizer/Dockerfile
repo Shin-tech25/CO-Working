@@ -2,7 +2,7 @@ FROM node:14
 RUN apt-get update
 RUN apt-get install -y curl
 RUN apt-get install -y nginx
-RUN apt-get install -y vim
+RUN apt-get install -y vi
 #runtest
 
 ARG project_dir=/home/node
