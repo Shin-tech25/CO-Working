@@ -40,6 +40,6 @@ jobs:
         chmod 700 ~/.ssh/id_rsa
         eval $(ssh-agent -s)
         ssh-add ~/.ssh/id_rsa
-        ssh-keyscan -p 22 -H 164.70.76.72 >> ~/.ssh/known_hosts  # staging001.ga
+        ssh-keyscan -p 22 -H 164.70.114.195 >> ~/.ssh/known_hosts  # production001.ga
         cd Ansible/
-        ansible-playbook -i inventory/hosts.yml playbooks/docker-deploy.yml --private-key ~/.ssh/id_rsa --extra-vars 'docker_deploy_host=staging001.ga docker_image="${{ secrets.DOCKER_HUB_USERNAME }}/jp_portfolio_visualizer:latest" docker_host_port=80 docker_container_port=80 docker_container_name=jp_portfolio_visualizer'
+        ansible-playbook -i inventory/hosts.yml playbooks/docker-deploy.yml --private-key ~/.ssh/id_rsa --extra-vars 'docker_deploy_host=production001.ga docker_image="${{ secrets.DOCKER_HUB_USERNAME }}/jp_portfolio_visualizer:latest" docker_host_port=80 docker_container_port=80 docker_container_name=jp_portfolio_visualizer'
