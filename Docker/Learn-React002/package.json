@@ -2,7 +2,7 @@
   "name": "learn-react002",
   "version": "1.0.0",
   "description": "learn-react002",
-  "private": true,
+  "private": false,
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server",
