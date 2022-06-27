@@ -12,5 +12,5 @@ COPY . /var/www/html/
 #specify port
 #EXPOSE 80
 
-CMD ["service", "nginx", "start"]
+RUN ["service", "nginx", "start"]
 CMD ["/bin/bash"]
