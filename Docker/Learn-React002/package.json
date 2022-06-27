@@ -1,10 +1,12 @@
 {
   "name": "learn-react002",
   "version": "1.0.0",
-  "description": "",
+  "description": "learn-react002",
+  "private": true,
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "webpack-dev-server",
+    "webpack": "webpack -d"
   },
   "keywords": [],
   "author": "",
