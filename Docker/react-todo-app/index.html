@@ -17,11 +17,13 @@
     <p>Hello World</p>
   </div>
   <script type="text/babel">
+    function Box(){
+      return(
+        <h1>React コンポーネント</h1>
+      );
+    }
     ReactDOM.render(
-      <div>
-        <div>書き換えてみる</div>
-        <div>書き換えてみる</div>
-      </div>,
+      <Box/>,
       document.getElementById('root')
     );
   </script>
