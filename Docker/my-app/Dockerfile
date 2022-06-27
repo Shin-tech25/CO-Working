@@ -1,5 +1,5 @@
-FROM httpd:latest
+FROM nginx
 
-COPY build/  /var/www/html/
+COPY build/  /usr/share/nginx/html/
 
-CMD ["httpd-foreground"]
+CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
