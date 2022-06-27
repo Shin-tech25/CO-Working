@@ -18,10 +18,10 @@
   </div>
   <script type="text/babel">
     function Box(props){
-      return <h1>Title is {props.title}</h1>;
+      return <h1>Title is {props.title} Color is {props.color}</h1>;
     }
     ReactDOM.render(
-      <Box title="PROPS" />,
+      <Box title="PROPS" color="skyblue" />,
       document.getElementById('root')
     );
   </script>
