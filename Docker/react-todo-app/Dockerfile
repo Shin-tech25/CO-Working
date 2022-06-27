@@ -12,5 +12,4 @@ COPY . /var/www/html/
 #specify port
 #EXPOSE 80
 
-RUN ["service", "nginx", "start"]
-CMD ["/bin/bash"]
+CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
