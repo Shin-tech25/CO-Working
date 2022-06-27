@@ -5,14 +5,12 @@ RUN apt-get install -y nginx
 RUN apt-get install -y vim
 #runtest
 
-ARG project_dir=/home/node
-WORKDIR $project_dir
-
 #ファイル追加
-COPY . ${project_dir}
+COPY . /var/www/html/
 
 
 #specify port
 #EXPOSE 80
 
+CMD ["service", "nginx", "start"]
 CMD ["/bin/bash"]
