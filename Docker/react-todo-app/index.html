@@ -17,17 +17,11 @@
     <p>Hello World</p>
   </div>
   <script type="text/babel">
-    function Box(){
-      return(
-        <h1>再利用も簡単！</h1>
-      );
+    function Box(props){
+      return <h1>Title is {props.title}</h1>;
     }
     ReactDOM.render(
-      <div>
-        <Box/>
-        <Box/>
-        <Box/>
-      </div>,
+      <Box title="PROPS" />,
       document.getElementById('root')
     );
   </script>
