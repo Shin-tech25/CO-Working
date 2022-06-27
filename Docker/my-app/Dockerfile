@@ -1,5 +1,5 @@
-FROM nginx:latest
+FROM httpd:latest
 
-COPY build/  /usr/share/nginx/html/
+COPY build/  /var/www/html/
 
-CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
+CMD ["service", "httpd", "start;"]
