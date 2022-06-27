@@ -1,5 +1,5 @@
 FROM nginx:latest
 
-COPY build/  /var/www/html/
+COPY build/  /usr/share/nginx/html/
 
 CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
