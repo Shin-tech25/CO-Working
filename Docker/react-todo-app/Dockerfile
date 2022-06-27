@@ -10,6 +10,6 @@ COPY . /var/www/html/
 
 
 #specify port
-#EXPOSE 80
+EXPOSE 80
 
-CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
+CMD ["service", "nginx", "start"]
