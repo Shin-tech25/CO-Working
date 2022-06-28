@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/main.719fea7c.css","mappings":"AAAA,SAAU,YAAe,CACzB,OAAQ,aAAgB,CACxB,MAAO,eAAkB,CACzB,GAAI,eAAgB,CAAE,eAAiB","sources":["index.css"],"sourcesContent":["div#root {padding: 10px; }\r\nbutton {margin: 0 10px; }\r\ntable {margin-top: 20px; }\r\nth {font-weight: 400; text-align: left;}\r\n"],"names":[],"sourceRoot":""}
