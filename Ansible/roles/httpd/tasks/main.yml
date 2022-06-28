@@ -15,12 +15,11 @@
 
 - name: configファイル
   template:
-    template:
-      src: httpd.tpl
-      dest: /etc/httpd/conf/httpd.conf
-      owner: root
-      group: root
-      mode: 0644
+    src: httpd.tpl
+    dest: /etc/httpd/conf/httpd.conf
+    owner: root
+    group: root
+    mode: 0644
 
 - name: ファイアウォール穴あけ(http)
   firewalld:
