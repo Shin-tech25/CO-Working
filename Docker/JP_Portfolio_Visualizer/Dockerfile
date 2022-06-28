@@ -1,8 +1,8 @@
-FROM node:14 
+FROM node:14
 RUN apt-get update
 RUN apt-get install -y curl
 RUN apt-get install -y nginx
-RUN apt-get install -y vi
+# RUN apt-get install -y vi
 RUN apt-get install -y pip
 
 #runtest
