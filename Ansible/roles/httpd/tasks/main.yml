@@ -15,7 +15,7 @@
 
 - name: configファイル
   template:
-    src: httpd.tpl
+    src: ../files/httpd.tpl
     dest: /etc/httpd/conf/httpd.conf
     owner: root
     group: root
