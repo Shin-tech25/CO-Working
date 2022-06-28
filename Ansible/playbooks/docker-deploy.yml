@@ -4,6 +4,11 @@
   gather_facts: true
 
   roles:
+    - role: firewalld_tcp_port_open
+      tags: firewalld_tcp_port_open
+      vars:
+        firewalld_tcp_port: "{{ docker_host_port }}"
+
     - role: docker_image_prune
       tags: docker_image_prune
 

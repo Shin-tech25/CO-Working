@@ -3,5 +3,5 @@
 
 # npmプロジェクト開発
 node_modules/
-public/**
-!public/index.html
+#public/**
+#!public/index.html
