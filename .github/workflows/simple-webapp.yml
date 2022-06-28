@@ -2,7 +2,6 @@ on:
   push:
     paths:
       - 'Docker/SimpleWebApp/**'
-      - '.github/workflows/my-app-pipeline.yml'
 
 jobs:
   CI:
