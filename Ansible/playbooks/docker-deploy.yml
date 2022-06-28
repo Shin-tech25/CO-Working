@@ -6,8 +6,6 @@
   roles:
     - role: firewalld_port_open
       tags: firewalld_port_open
-      vars:
-        firewalld_port: "{{ docker_host_port }}"
 
     - role: docker_image_prune
       tags: docker_image_prune

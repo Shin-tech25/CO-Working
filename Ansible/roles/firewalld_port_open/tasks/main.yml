@@ -2,6 +2,6 @@
 # tasks file for firewalld_port_open
 - name: Dockerで使うホスト側のport開放
   firewalld:
-    port: {{ firewalld_port }}
+    port: "{{ docker_host_port }}"
     permanent: no # 再起動すると閉じるport
     state: enabled
