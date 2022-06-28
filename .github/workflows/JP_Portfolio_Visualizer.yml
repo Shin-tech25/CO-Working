@@ -1,7 +1,7 @@
 on:
   push:
     paths:
-      - 'Docker/JP_Portfolio_Visualizer/**'
+      - 'Docker/JP_Portfolio_Visualizer_old/**'
 
 jobs:
   CICD:
