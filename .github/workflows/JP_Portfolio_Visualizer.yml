@@ -26,7 +26,7 @@ jobs:
          context: Docker/JP_Portfolio_Visualizer/
          file:  Docker/JP_Portfolio_Visualizer/Dockerfile
          push: true
-         tags:  ${{ secrets.DOCKER_HUB_USERNAME }}/JP_Portfolio_Visualizer:latest
+         tags:  ${{ secrets.DOCKER_HUB_USERNAME }}/jp_portfolio_visualizer:latest
 
       # CD Phase
       - name: deploy docker image
@@ -40,4 +40,4 @@ jobs:
           ssh-add ~/.ssh/id_rsa
           ssh-keyscan -p 22 -H 164.70.114.195 >> ~/.ssh/known_hosts  # production001.ga
           cd Ansible/
-          ansible-playbook -i inventory/hosts.yml playbooks/docker-deploy.yml --private-key ~/.ssh/id_rsa --extra-vars 'docker_deploy_host=production001.ga docker_image="${{ secrets.DOCKER_HUB_USERNAME }}/JP_Portfolio_Visualizer:latest" docker_host_port=1001 docker_container_port=80 docker_container_name=JP_Portfolio_Visualizer'
+          ansible-playbook -i inventory/hosts.yml playbooks/docker-deploy.yml --private-key ~/.ssh/id_rsa --extra-vars 'docker_deploy_host=production001.ga docker_image="${{ secrets.DOCKER_HUB_USERNAME }}/jp_portfolio_visualizer:latest" docker_host_port=1001 docker_container_port=80 docker_container_name=jp_portfolio_visualizer'
