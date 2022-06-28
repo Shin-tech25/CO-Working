@@ -17,8 +17,8 @@
       tags: linux_common_packages
 
     # firewalld有効化と設定
-    - role: firewalld
-      tags: firewalld
+    - role: firewalld_setup
+      tags: firewalld_setup
 
     # sshd有効化と設定
     - role: sshd
