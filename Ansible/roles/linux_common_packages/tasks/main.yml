@@ -11,3 +11,4 @@
   yum:
     name: '*'
     state: latest
+    autoremove: yes
