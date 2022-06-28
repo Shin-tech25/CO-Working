@@ -5,13 +5,22 @@
     name: httpd
     state: latest
 
-#- name: httpd有効化
-#  service:
-#    name: httpd
-#    state: restarted
-#    enabled: yes
-#  ignore_errors: true
-#  changed_when: false
+- name: httpd有効化
+  service:
+    name: httpd
+    state: restarted
+    enabled: yes
+  ignore_errors: true
+  changed_when: false
+
+- name: configファイル
+  template:
+    template:
+      src: httpd.tpl
+      dest: /etc/httpd/conf/httpd.conf
+      owner: root
+      group: root
+      mode: 0644
 
 - name: ファイアウォール穴あけ(http)
   firewalld:

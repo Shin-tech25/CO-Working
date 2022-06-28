@@ -3,6 +3,13 @@
   become: true
   gather_facts: true
 
+  tasks:
+    - name: Dockerで使うホスト側のport開放
+      firewalld:
+        port: "{{docker_host_port}}"
+        permanent: no # 再起動すると閉じるport
+        state: enabled
+
   roles:
     - role: docker_image_prune
       tags: docker_image_prune
