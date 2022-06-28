@@ -2,6 +2,7 @@ on:
   push:
     paths:
       - 'Docker/my-app/**'
+      - './github/workflows/my-app-pipeline.yml'
 
 jobs:
   CICD:
