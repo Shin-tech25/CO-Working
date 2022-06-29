@@ -1,6 +1,6 @@
 ---
-- name: WorkStations用のPlaybook
-  hosts: pukiwiki
+- name: manager Playbook
+  hosts: manager
   become: true
   gather_facts: true
 
