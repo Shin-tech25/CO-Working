@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/main.08052a9a.css","mappings":"AAAA,MACE,wBACF,CAEA,kBACE,gBAAiB,CACjB,gBACF","sources":["index.css"],"sourcesContent":[".book{\n  border-collapse: collapse;\n}\n\n.book th, .book td{\n  border: solid 1px;\n  padding: 1px 15px;\n}\n"],"names":[],"sourceRoot":""}
