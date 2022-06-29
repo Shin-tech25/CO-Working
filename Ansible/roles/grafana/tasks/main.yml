@@ -5,9 +5,11 @@
     url: https://dl.grafana.com/enterprise/release/grafana-enterprise-9.0.1-1.x86_64.rpm
     dest: /usr/local/src
 
-- name: Grafana インストール
+- name: Change Directory
   shell: cd /usr/local/src
   changed_when: false
+
+- name: Grafana インストール
   yum:
     name: grafana-enterprise-9.0.1-1.x86_64.rpm
     state: installed
