@@ -16,8 +16,12 @@
 
     - role: node_exporter
       tags: node_exporter
+
     - role: firewalld_tcp_port_open
       firewalld_tcp_port: 9100
 
     - role: grafana
       tags: grafana
+
+    - role: firewalld_tcp_port_open
+      firewalld_tcp_port: 3000
