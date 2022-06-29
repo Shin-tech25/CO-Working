@@ -8,7 +8,6 @@
     state: latest
 
 - name: パッケージのアップデート
-  dnf:
+  yum:
     name: '*'
     state: latest
-    allowerasing: yes

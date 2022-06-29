@@ -12,5 +12,5 @@
 - name: 自動起動及びサービスを起動
   service:
     name: grafana-server
-    status: started
+    state: started
     enabled: yes
