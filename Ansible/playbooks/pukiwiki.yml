@@ -7,3 +7,17 @@
   roles:
     - role: httpd
       tags: httpd
+
+    - role: prometheus
+      tags: prometheus
+
+    - role: firewalld_tcp_port_open
+      firewalld_tcp_port: 9090
+
+    - role: node_exporter
+      tags: node_exporter
+    - role: firewalld_tcp_port_open
+      firewalld_tcp_port: 9100
+
+    - role: grafana
+      tags: grafana
