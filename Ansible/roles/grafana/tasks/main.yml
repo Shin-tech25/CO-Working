@@ -18,4 +18,4 @@
   service:
     name: grafana-server
     status: started
-    enable: yes
+    enabled: yes
