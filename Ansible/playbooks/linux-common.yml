@@ -28,7 +28,12 @@
     - role: install_docker
       tags: install_docker
 
-    # Zabbixエージェントインストール
+    # node_exporterインストール
+    - role: node_exporter
+      tags: node_exporter
+
+    - role: firewalld_tcp_port_open
+      firewalld_tcp_port: 9100
 
     # SELinux 無効化と必要なら再起動
     - role: selinux

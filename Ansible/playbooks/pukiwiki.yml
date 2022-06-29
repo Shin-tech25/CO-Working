@@ -1,9 +1,0 @@
----
-- name: WorkStations用のPlaybook
-  hosts: pukiwiki
-  become: true
-  gather_facts: true
-
-  roles:
-    - role: httpd
-      tags: httpd

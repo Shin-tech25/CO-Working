@@ -3,6 +3,7 @@
 - name: リポジトリの追加
   yum_repository:
     name: prometheus
+    description: prometheus
     baseurl: https://packagecloud.io/prometheus-rpm/release/el/$releasever/$basearch
     repo_gpgcheck: yes
     enabled: no
@@ -22,4 +23,4 @@
   service:
     name: prometheus
     state: started
-    enable: yes
+    enabled: yes
