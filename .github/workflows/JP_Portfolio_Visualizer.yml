@@ -1,5 +1,7 @@
 on:
   push:
+    branches:
+      - 'dev**'
     paths:
       - 'Docker/JP_Portfolio_Visualizer/**'
 

@@ -1,5 +1,7 @@
 on:
   push:
+    branches:
+      - 'dev**'
     paths:
       - 'Docker/tic-tac-toe/**'
 
