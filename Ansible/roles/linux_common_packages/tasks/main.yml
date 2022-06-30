@@ -12,9 +12,7 @@
   debug: var=result
 
 - name: パッケージのアップデート
-  yum:
-    name: '*'
-    state: latest
+  shell: yum update -y
   register: result
 
 - name: debug
