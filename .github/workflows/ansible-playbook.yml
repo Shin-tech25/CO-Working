@@ -27,5 +27,4 @@ jobs:
         # ssh-keyscan -p 22 -H 164.70.90.222 >> ~/.ssh/known_hosts  # test005.ga
         # ssh-keyscan -p 22 -H 164.70.114.195 >> ~/.ssh/known_hosts  # production001.ga
         cd Ansible/
-        ansible-playbook -i inventory/hosts.yml playbooks/site.yml --private-key ~/.ssh/id_rsa --syntax-check
-        ansible-playbook -i inventory/hosts.yml playbooks/site.yml --private-key ~/.ssh/id_rsa --check
+        ansible-playbook -i inventory/hosts.yml playbooks/site.yml --private-key ~/.ssh/id_rsa
