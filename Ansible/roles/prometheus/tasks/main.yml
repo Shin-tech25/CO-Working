@@ -24,3 +24,12 @@
     name: prometheus
     state: started
     enabled: yes
+
+- name: Promethes設定ファイル(/etc/prometheus/prometheus.yml)作成
+  vars:
+    node_exporter:
+      - { job_name: node_localhost, target: localhost:9100 }
+      - { job_name: node_staging001.ga, target: staging001.ga:9100 }
+  template:
+    src: "{{role_path}}/files/prometheus.yml.j2"
+    dest: /etc/prometheus/prometheus.yml
