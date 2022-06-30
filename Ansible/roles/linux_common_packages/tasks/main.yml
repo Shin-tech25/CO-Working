@@ -12,7 +12,7 @@
   debug: var=result
 
 - name: パッケージのアップデート
-  shell: yum update -y
+  shell: dnf update -y
   register: result
 
 - name: debug
