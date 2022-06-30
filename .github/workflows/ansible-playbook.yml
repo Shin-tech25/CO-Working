@@ -3,6 +3,9 @@ name: ansible-playbook  # ワークフローの名前
 # See https://docs.github.com/ja/actions/reference/workflow-syntax-for-github-actions#onpushpull_requestpull_request_targetpathspaths-ignore
 on:
   push:
+    branches:
+      - main
+      - master
     paths:
       - 'Ansible/**'
       - '.github/workflows/ansible-playbook.yml'
