@@ -6,8 +6,16 @@
   yum:
     name: "{{ packages }}"
     state: latest
+  register: result
+
+- name: debug
+  debug: var=result
 
 - name: パッケージのアップデート
   yum:
     name: '*'
     state: latest
+  register: result
+
+- name: debug
+  debug: var=result
