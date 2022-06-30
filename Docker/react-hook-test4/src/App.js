@@ -1,25 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useState, useEffect } from 'react';
 
 function App() {
+  const [count, setCount] = useState(0);
+
+  // useEffectの第２引数を指定しないため、コンポーネント（この場合ではAppコンポーネント）がレンダーされた後、毎回実行されている。
+  useEffect(() => {
+    console.log(document.getElementById("effectHook").innerText);
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <p id="effectHook">You clicked { count } times</p>
+      <button onClick={ ()=> setCount(count+1) }></button>
+    </>
+  )
 }
 
 export default App;
