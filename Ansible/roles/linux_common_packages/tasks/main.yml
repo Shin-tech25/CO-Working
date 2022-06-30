@@ -10,10 +10,3 @@
 
 - name: debug
   debug: var=result
-
-- name: パッケージのアップデート
-  shell: dnf update -y
-  register: result
-
-- name: debug
-  debug: var=result
