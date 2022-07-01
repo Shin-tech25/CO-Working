@@ -1,24 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useState, useEffect, useRef } from 'react';
 
 function App() {
+  const [count, setCount] = useState(0);
+  // 初回レンダーかどうかのフラグ
+  const isInitialRender = useRef(true);
+  // isInitialRender.current を更新する副作用
+  useEffect(() => {
+    if (isInitialRender.current) {
+      // refオブジェクトが更新されてもコンポーネントは再レンダーされない。
+      isInitialRender.current = false;
+    }
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {/* countが更新されるまで、「初回レンダー」が表示される。 */}
+      <p>{isInitialRender.current ? "初回レンダー" : "再レンダー"}</p>
+      <p>count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>+</button>
+
+    </>
   );
 }
 
