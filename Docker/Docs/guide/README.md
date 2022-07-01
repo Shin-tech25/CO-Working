@@ -7,3 +7,5 @@ You can learn about full stack development, which contains frontend and backend 
 ## Other Considerations
 
 You should definitely check out the official [Coursetro.com](https://coursetro.com) website for more information
+
+#
