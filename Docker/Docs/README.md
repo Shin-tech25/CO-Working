@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: /green.jpg
+heroImage: img/green.jpg
 heroText: Shin-tech25's Blog
 tagline: null
 actionText: FrontPage
