@@ -3,12 +3,6 @@ import React, { useState } from 'react';
 
 
 // Appコンポーネントが再レンダーする度に再レンダーされる。
-/*
-function Child({ count }) {
-  console.log('render Child');
-  return <p>Child: {count}</p>
-}
-*/
 
 // props.countが更新されない限り、再レンダーされない。
 const Child = React.memo(({ count }) => {

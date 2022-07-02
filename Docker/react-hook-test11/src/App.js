@@ -1,9 +1,8 @@
-import logo from './logo.svg';
 import './App.css';
 import React, { useState, useEffect, useRef } from 'react';
 
 // props.countが更新されない限り、再レンダーされない。
-const Child = React.memo(({ count }) => {
+const Child = React.memo(() => {
   console.log("render Child");
   return <p>Child</p>;
 });
