@@ -6,13 +6,13 @@ module.exports = {
     // const path = require('path')
     // config.output.publicPath = path.resolve(__dirname, 'dist')
   },
-  title: "Shin-tech25:Docs",
+  title: "Docs",
   description: "Full stack dev",
   themeConfig: {
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Guide', link: '/guide/' },
-      {text: 'About me', link: 'http://Shin-tech25.com/'},
+      { text: 'FrontPage', link: '/front/' },
+      { text: 'About me', link: 'http://Shin-tech25.com/' },
     ],
     sidebar: 'auto'
   }

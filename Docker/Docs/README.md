@@ -1,10 +1,10 @@
 ---
 home: true
-heroImage: /hero.png
-heroText: Hero Title
-tagline: Hero subtitle
-actionText: Get Started →
-actionLink: /guide/
+heroImage: /green.jpg
+heroText: Shin-tech25's Blog
+tagline: 個人開発エンジニアのtips
+actionText: FrontPage
+actionLink: /front/
 features:
   - title: Simplicity First
     details: Minimal setup with markdown-centered project structure helps you focus on writing.
