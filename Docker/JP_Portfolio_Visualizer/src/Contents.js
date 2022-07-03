@@ -26,13 +26,13 @@ function TimePeriodBox(props) {
         name="TimePeriodBox"
         options={options}
         defaultValue={ {value: 'Year-to-Year', label: 'Year-to-Year'} }
-        onChange={(e) => { {props.setTimePeriod(e.value)} }}
+        onChange={(e) => { props.setTimePeriod(e.value) }}
       />
     </>
   );
 }
 
-function StartYearBox() {
+function StartYearBox(props) {
   const options = [];
   for (let i = 1985; i <= 2022; i++){
     let obj = {};
@@ -47,12 +47,13 @@ function StartYearBox() {
         name="StartYearBox"
         options={options}
         defaultValue={{ value: '1985', label: '1985'}}
+        onChange={(e) => { props.setStartYear(e.value) }}
       />
     </>
   );
 }
 
-function EndYearBox() {
+function EndYearBox(props) {
   const options = [];
   for (let i = 2022; i >= 1985; i--){
     let obj = {};
@@ -67,12 +68,13 @@ function EndYearBox() {
         name="EndYearBox"
         options={options}
         defaultValue={{value: '2022', label: '2022'}}
+        onChange={(e) => { props.setEndYear(e.value) }}
       />
     </>
   );
 }
 
-function IncludeYTDBox() {
+function IncludeYTDBox(props) {
   const options = [
     { value: 'Yes', label: 'Yes' },
     { value: 'No', label: 'No' }
@@ -84,12 +86,13 @@ function IncludeYTDBox() {
         name="IncludeTYDBox"
         options={options}
         defaultValue={{ value: 'No', label: 'No'}}
+        onChange={(e) => { props.setIncludeYTD(e.value) }}
       />
     </>
   );
 }
 
-function CashFlowsBox() {
+function CashFlowsBox(props) {
   const options = [
     { value: 'Contribute Fixed Ammount', label: 'Contribute Fixed Ammount' },
     { value: 'Withdraw Fixed Ammount', label: 'Withdraw Fixed Ammount' },
@@ -102,12 +105,13 @@ function CashFlowsBox() {
         name="CashFlowsBox"
         options={options}
         defaultValue={{value: 'None', label: 'None'}}
+        onChange={(e) => { props.setCashFlows(e.value) }}
       />
     </>
   );
 }
 
-function RebalancingBox() {
+function RebalancingBox(props) {
   const options = [
     { value: 'No rebalancing', label: 'No rebalancing' },
     { value: 'Rebalance annualy', label: 'Rebalance annualy' },
@@ -123,12 +127,13 @@ function RebalancingBox() {
         name="RebalancingBox"
         options={options}
         defaultValue={{value: 'Rebalance annualy', label: 'Rebalance annualy'}}
+        onChange={(e) => { props.setRebalancing(e.value) }}
       />
     </>
   );
 }
 
-function LeverageTypeBox() {
+function LeverageTypeBox(props) {
   const options = [
     { value: 'None', label: 'None' },
     { value: 'Fixed Debt Ammount', label: 'Fixed Debt Ammount' },
@@ -141,12 +146,13 @@ function LeverageTypeBox() {
         name="LeverageTypeBox"
         options={options}
         defaultValue={{value: 'None', label: 'None'}}
+        onChange={(e) => { props.setLeverageType(e.value) }}
       />
     </>
   );
 }
 
-function ReinvestDividendsBox() {
+function ReinvestDividendsBox(props) {
   const options = [
     { value: 'Yes', label: 'Yes' },
     { value: 'No', label: 'No' }
@@ -158,12 +164,13 @@ function ReinvestDividendsBox() {
         name="ReinvestDividentsBox"
         options={options}
         defaultValue={{value: 'Yes', label: 'Yes'}}
+        onChange={(e) => { props.setReinvenstDividends(e.value) }}
       />
     </>
   );
 }
 
-function DisplayIncomeBox() {
+function DisplayIncomeBox(props) {
   const options = [
     { value: 'Yes', label: 'Yes' },
     { value: 'No', label: 'No' }
@@ -175,12 +182,13 @@ function DisplayIncomeBox() {
         name="DisplayIncomeBox"
         options={options}
         defaultValue={{value: 'No', label: 'No'}}
+        onChange={(e) => { props.setDisplayIncome(e.value) }}
       />
     </>
   );
 }
 
-function FactorRegressionBox() {
+function FactorRegressionBox(props) {
   const options = [
     { value: 'Yes', label: 'Yes' },
     { value: 'No', label: 'No' }
@@ -192,12 +200,13 @@ function FactorRegressionBox() {
         name="FactorRegressionBox"
         options={options}
         defaultValue={{value: 'No', label: 'No'}}
+        onChange={(e) => { props.setFactorRegression(e.value) }}
       />
     </>
   );
 }
 
-function BenchmarkBox() {
+function BenchmarkBox(props) {
   const options = [
     { value: 'None', label: 'None' },
     { value: 'Specify Ticker', label: 'Specify Ticker' },
@@ -210,12 +219,13 @@ function BenchmarkBox() {
         name="BenchmarkBox"
         options={options}
         defaultValue={{ value: 'None', label: 'None'}}
+        onChange={(e) => { props.setBenchMark(e.value) }}
       />
     </>
   );
 }
 
-function PortfolioNamesBox() {
+function PortfolioNamesBox(props) {
   const options = [
     { value: 'Default', label: 'Default' },
     { value: 'Custom', label: 'Custom' }
@@ -227,33 +237,33 @@ function PortfolioNamesBox() {
         name="PortfolioNameBox"
         options={options}
         defaultValue={{value: 'Default', 'label': 'Default'}}
+        onChange={(e) => { props.setPortfolioNames(e.value) }}
       />
     </>
   );
 }
 
 function AnalyzePortfolio(props){
-  console.log(
-    props.timePeriod
-  );
   return(
     <>
       <ButtonGroup color="primary" aria-label="outlined primary button group">
         <Button 
           onClick={() => {
-            console.log(props.timePeriod)
-            console.log(props.startYear)
-            console.log(props.endYear)
-            console.log(props.includeYTD)
-            console.log(props.initialAmount)
-            console.log(props.cashFlows)
-            console.log(props.rebalancing)
-            console.log(props.leverageType)
-            console.log(props.reinvestDividends)
-            console.log(props.displayIncome)
-            console.log(props.factorRegression)
-            console.log(props.benchMark)
-            console.log(props.portfolioNames)
+            alert([
+              props.timePeriod,
+              props.startYear,
+              props.endYear,
+              props.includeYTD,
+              props.initialAmount,
+              props.cashFlows,
+              props.rebalancing,
+              props.leverageType,
+              props.reinvestDividends,
+              props.displayIncome,
+              props.factorRegression,
+              props.benchMark,
+              props.portfolioNames,
+            ])
             }}>
             Analyze Portfolios
         </Button>
@@ -287,20 +297,20 @@ function Contents() {
         <Explanation />
 
         <TimePeriodBox setTimePeriod={setTimePeriod} />
-        <StartYearBox />
-        <EndYearBox />
-        <IncludeYTDBox />
+        <StartYearBox setStartYear={setStartYear} />
+        <EndYearBox setEndYear={setEndYear} />
+        <IncludeYTDBox setIncludeYTD={setIncludeYTD} />
 
         {/* Initial Ammount */}
 
-        <CashFlowsBox />
-        <RebalancingBox />
-        <LeverageTypeBox />
-        <ReinvestDividendsBox />
-        <DisplayIncomeBox />
-        <FactorRegressionBox />
-        <BenchmarkBox />
-        <PortfolioNamesBox />
+        <CashFlowsBox setCashFlows={setCashFlows} />
+        <RebalancingBox setRebalancing={setRebalancing} />
+        <LeverageTypeBox setLeverageType={setLeverageType} />
+        <ReinvestDividendsBox setReinvenstDividends={setReinvenstDividends} />
+        <DisplayIncomeBox setDisplayIncome={setDisplayIncome} />
+        <FactorRegressionBox setFactorRegression={setFactorRegression} />
+        <BenchmarkBox setBenchMark={setBenchMark} />
+        <PortfolioNamesBox setPortfolioNames={setPortfolioNames} />
         <AnalyzePortfolio
           timePeriod={timePeriod}
           startYear={startYear}
