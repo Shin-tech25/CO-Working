@@ -1,6 +1,8 @@
 import './Contents.css';
 import React, { useState, useEffect } from 'react';
 import Select from 'react-select';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
+import Button from '@material-ui/core/Button';
 
 function Explanation() {
   return (
@@ -229,6 +231,17 @@ function PortfolioNamesBox() {
   );
 }
 
+function AnalyzePortfolio(){
+  return(
+    <>
+      <ButtonGroup color="primary" aria-label="outlined primary button group">
+        <Button onClick={() => console.log('Hello')}>Analyze Portfolios</Button>
+        <Button onClick={() => console.log('ABC')}>Cancel</Button>
+      </ButtonGroup>
+    </>
+  );
+}
+
 function Contents() {
   const [timePeriod, setTimePeriod] = useState("Year-to-Year");
   const [startYear, setStartYear] = useState("1985");
@@ -267,6 +280,7 @@ function Contents() {
         <FactorRegressionBox />
         <BenchmarkBox />
         <PortfolioNamesBox />
+        <AnalyzePortfolio />
       </div>
     </>
   );
