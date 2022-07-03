@@ -20,7 +20,11 @@ function TimePeriodBox() {
   return (
     <>
       <p>TimePeriod</p>
-      <Select options={options} />
+      <Select
+        name="TimePeriodBox"
+        options={options}
+        defaultValue={ {value: 'Year-to-Year', label: 'Year-to-Year'} }  
+      />
     </>
   );
 }
@@ -36,14 +40,18 @@ function StartYearBox() {
   return (
     <>
       <p>Start Year</p>
-      <Select options={options} />
+      <Select 
+        name="StartYearBox"
+        options={options}
+        defaultValue={{ value: '1985', label: '1985'}}
+      />
     </>
   );
 }
 
 function EndYearBox() {
   const options = [];
-  for (let i = 1985; i <= 2022; i++){
+  for (let i = 2022; i >= 1985; i--){
     let obj = {};
     obj['value'] = i;
     obj['label'] = i;
@@ -52,7 +60,11 @@ function EndYearBox() {
   return (
     <>
       <p>End Year</p>
-      <Select options={options} />
+      <Select
+        name="EndYearBox"
+        options={options}
+        defaultValue={{value: '2022', label: '2022'}}
+      />
     </>
   );
 }
@@ -64,8 +76,12 @@ function IncludeYTDBox() {
   ]
   return (
     <>
-      <p>IncludeYTDBox</p>
-      <Select options={options} />
+      <p>IncludeYTD</p>
+      <Select
+        name="IncludeTYDBox"
+        options={options}
+        defaultValue={{ value: 'No', label: 'No'}}
+      />
     </>
   );
 }
@@ -79,7 +95,11 @@ function CashFlowsBox() {
   return (
     <>
       <p>Cashflows</p>
-      <Select options={options} />
+      <Select
+        name="CashFlowsBox"
+        options={options}
+        defaultValue={{value: 'None', label: 'None'}}
+      />
     </>
   );
 }
@@ -96,7 +116,11 @@ function RebalancingBox() {
   return (
     <>
       <p>Rebalancing</p>
-      <Select options={options} />
+      <Select
+        name="RebalancingBox"
+        options={options}
+        defaultValue={{value: 'Rebalance annualy', label: 'Rebalance annualy'}}
+      />
     </>
   );
 }
@@ -109,8 +133,12 @@ function LeverageTypeBox() {
   ]
   return (
     <>
-      <p>LeverageTypeBox</p>
-      <Select options={options} />
+      <p>LeverageType</p>
+      <Select
+        name="LeverageTypeBox"
+        options={options}
+        defaultValue={{value: 'None', label: 'None'}}
+      />
     </>
   );
 }
@@ -123,7 +151,11 @@ function ReinvestDividendsBox() {
   return (
     <>
       <p>Reinvest Dividends</p>
-      <Select options={options} />
+      <Select
+        name="ReinvestDividentsBox"
+        options={options}
+        defaultValue={{value: 'Yes', label: 'Yes'}}
+      />
     </>
   );
 }
@@ -136,7 +168,11 @@ function DisplayIncomeBox() {
   return (
     <>
       <p>Display Income</p>
-      <Select options={options} />
+      <Select
+        name="DisplayIncomeBox"
+        options={options}
+        defaultValue={{value: 'No', label: 'No'}}
+      />
     </>
   );
 }
@@ -149,7 +185,11 @@ function FactorRegressionBox() {
   return (
     <>
       <p>Factor Regression</p>
-      <Select options={options} />
+      <Select
+        name="FactorRegressionBox"
+        options={options}
+        defaultValue={{value: 'No', label: 'No'}}
+      />
     </>
   );
 }
@@ -163,7 +203,11 @@ function BenchmarkBox() {
   return (
     <>
       <p>Benchmark</p>
-      <Select options={options} />
+      <Select
+        name="BenchmarkBox"
+        options={options}
+        defaultValue={{ value: 'None', label: 'None'}}
+      />
     </>
   );
 }
@@ -176,7 +220,11 @@ function PortfolioNamesBox() {
   return (
     <>
       <p>Portfolio Names</p>
-      <Select options={options} />
+      <Select
+        name="PortfolioNameBox"
+        options={options}
+        defaultValue={{value: 'Default', 'label': 'Default'}}
+      />
     </>
   );
 }
