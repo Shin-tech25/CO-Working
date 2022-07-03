@@ -14,7 +14,7 @@ function Explanation() {
   )
 }
 
-function TimePeriodBox() {
+function TimePeriodBox(props) {
   const options = [
     { value: 'Year-to-Year', label: 'Year-to-Year' },
     { value: 'Month-to-Month', label: 'Month-to-Month' }
@@ -25,7 +25,8 @@ function TimePeriodBox() {
       <Select
         name="TimePeriodBox"
         options={options}
-        defaultValue={ {value: 'Year-to-Year', label: 'Year-to-Year'} }  
+        defaultValue={ {value: 'Year-to-Year', label: 'Year-to-Year'} }
+        onChange={(e) => { {props.setTimePeriod(e.value)} }}
       />
     </>
   );
@@ -231,11 +232,31 @@ function PortfolioNamesBox() {
   );
 }
 
-function AnalyzePortfolio(){
+function AnalyzePortfolio(props){
+  console.log(
+    props.timePeriod
+  );
   return(
     <>
       <ButtonGroup color="primary" aria-label="outlined primary button group">
-        <Button onClick={() => console.log('Hello')}>Analyze Portfolios</Button>
+        <Button 
+          onClick={() => {
+            console.log(props.timePeriod)
+            console.log(props.startYear)
+            console.log(props.endYear)
+            console.log(props.includeYTD)
+            console.log(props.initialAmount)
+            console.log(props.cashFlows)
+            console.log(props.rebalancing)
+            console.log(props.leverageType)
+            console.log(props.reinvestDividends)
+            console.log(props.displayIncome)
+            console.log(props.factorRegression)
+            console.log(props.benchMark)
+            console.log(props.portfolioNames)
+            }}>
+            Analyze Portfolios
+        </Button>
         <Button onClick={() => console.log('ABC')}>Cancel</Button>
       </ButtonGroup>
     </>
@@ -265,7 +286,7 @@ function Contents() {
       <div className="Contents">
         <Explanation />
 
-        <TimePeriodBox />
+        <TimePeriodBox setTimePeriod={setTimePeriod} />
         <StartYearBox />
         <EndYearBox />
         <IncludeYTDBox />
@@ -280,7 +301,21 @@ function Contents() {
         <FactorRegressionBox />
         <BenchmarkBox />
         <PortfolioNamesBox />
-        <AnalyzePortfolio />
+        <AnalyzePortfolio
+          timePeriod={timePeriod}
+          startYear={startYear}
+          endYear={endYear}
+          includeYTD={includeYTD}
+          initialAmount={initialAmount}
+          cashFlows={cashFlows}
+          rebalancing={rebalancing}
+          leverageType={leverageType}
+          reinvestDividends={reinvestDividends}
+          displayIncome={displayIncome}
+          factorRegression={factorRegression}
+          benchMark={benchMark}
+          portfolioNames={portfolioNames}
+        />
       </div>
     </>
   );
