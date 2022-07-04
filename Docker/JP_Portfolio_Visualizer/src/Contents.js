@@ -1,5 +1,5 @@
 import './Contents.css';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import Select from 'react-select';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Button from '@material-ui/core/Button';
@@ -14,7 +14,7 @@ function Explanation() {
   )
 }
 
-function TimePeriodBox(props) {
+const TimePeriodBox = React.memo((props) => {
   const options = [
     { value: 'Year-to-Year', label: 'Year-to-Year' },
     { value: 'Month-to-Month', label: 'Month-to-Month' }
@@ -30,9 +30,9 @@ function TimePeriodBox(props) {
       />
     </>
   );
-}
+})
 
-function StartYearBox(props) {
+const StartYearBox = React.memo((props) => {
   const options = [];
   for (let i = 1985; i <= 2022; i++){
     let obj = {};
@@ -43,7 +43,7 @@ function StartYearBox(props) {
   return (
     <>
       <p>Start Year</p>
-      <Select 
+      <Select
         name="StartYearBox"
         options={options}
         defaultValue={{ value: '1985', label: '1985'}}
@@ -51,9 +51,9 @@ function StartYearBox(props) {
       />
     </>
   );
-}
+})
 
-function EndYearBox(props) {
+const EndYearBox = React.memo((props) => {
   const options = [];
   for (let i = 2022; i >= 1985; i--){
     let obj = {};
@@ -72,9 +72,9 @@ function EndYearBox(props) {
       />
     </>
   );
-}
+})
 
-function IncludeYTDBox(props) {
+const IncludeYTDBox = React.memo((props) => {
   const options = [
     { value: 'Yes', label: 'Yes' },
     { value: 'No', label: 'No' }
@@ -90,9 +90,9 @@ function IncludeYTDBox(props) {
       />
     </>
   );
-}
+})
 
-function CashFlowsBox(props) {
+const CashFlowsBox = React.memo((props) => {
   const options = [
     { value: 'Contribute Fixed Ammount', label: 'Contribute Fixed Ammount' },
     { value: 'Withdraw Fixed Ammount', label: 'Withdraw Fixed Ammount' },
@@ -109,9 +109,9 @@ function CashFlowsBox(props) {
       />
     </>
   );
-}
+})
 
-function RebalancingBox(props) {
+const RebalancingBox = React.memo((props) => {
   const options = [
     { value: 'No rebalancing', label: 'No rebalancing' },
     { value: 'Rebalance annualy', label: 'Rebalance annualy' },
@@ -131,9 +131,9 @@ function RebalancingBox(props) {
       />
     </>
   );
-}
+})
 
-function LeverageTypeBox(props) {
+const LeverageTypeBox = React.memo((props) => {
   const options = [
     { value: 'None', label: 'None' },
     { value: 'Fixed Debt Ammount', label: 'Fixed Debt Ammount' },
@@ -150,9 +150,9 @@ function LeverageTypeBox(props) {
       />
     </>
   );
-}
+})
 
-function ReinvestDividendsBox(props) {
+const ReinvestDividendsBox = React.memo((props) => {
   const options = [
     { value: 'Yes', label: 'Yes' },
     { value: 'No', label: 'No' }
@@ -168,9 +168,9 @@ function ReinvestDividendsBox(props) {
       />
     </>
   );
-}
+})
 
-function DisplayIncomeBox(props) {
+const DisplayIncomeBox = React.memo((props) => {
   const options = [
     { value: 'Yes', label: 'Yes' },
     { value: 'No', label: 'No' }
@@ -186,9 +186,9 @@ function DisplayIncomeBox(props) {
       />
     </>
   );
-}
+})
 
-function FactorRegressionBox(props) {
+const FactorRegressionBox = React.memo((props) => {
   const options = [
     { value: 'Yes', label: 'Yes' },
     { value: 'No', label: 'No' }
@@ -204,9 +204,9 @@ function FactorRegressionBox(props) {
       />
     </>
   );
-}
+})
 
-function BenchmarkBox(props) {
+const BenchmarkBox = React.memo((props) => {
   const options = [
     { value: 'None', label: 'None' },
     { value: 'Specify Ticker', label: 'Specify Ticker' },
@@ -223,9 +223,9 @@ function BenchmarkBox(props) {
       />
     </>
   );
-}
+})
 
-function PortfolioNamesBox(props) {
+const PortfolioNamesBox = React.memo((props) => {
   const options = [
     { value: 'Default', label: 'Default' },
     { value: 'Custom', label: 'Custom' }
@@ -241,13 +241,13 @@ function PortfolioNamesBox(props) {
       />
     </>
   );
-}
+})
 
 function AnalyzePortfolio(props){
   return(
     <>
       <ButtonGroup color="primary" aria-label="outlined primary button group">
-        <Button 
+        <Button
           onClick={() => {
             alert([
               props.timePeriod,
@@ -290,6 +290,8 @@ function Contents() {
 
   // Portfolio Assets 配列を追加すること前提にしてどう実装するか？
   // const [portfolioAssets, setPortfolioAssets] = useState("none");
+
+  console.log("render Contents");
 
   return (
     <>
