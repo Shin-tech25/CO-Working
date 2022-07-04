@@ -243,35 +243,22 @@ const PortfolioNamesBox = React.memo((props) => {
   );
 })
 
-function AnalyzePortfolio(props){
+const AnalyzePortfolio = React.memo((props) => {
   return(
     <>
       <ButtonGroup color="primary" aria-label="outlined primary button group">
         <Button
-          onClick={() => {
-            alert([
-              props.timePeriod,
-              props.startYear,
-              props.endYear,
-              props.includeYTD,
-              props.initialAmount,
-              props.cashFlows,
-              props.rebalancing,
-              props.leverageType,
-              props.reinvestDividends,
-              props.displayIncome,
-              props.factorRegression,
-              props.benchMark,
-              props.portfolioNames,
-            ])
-            }}>
+          onClick={() => { props.setVisibleChart(true) }}>
             Analyze Portfolios
         </Button>
-        <Button onClick={() => console.log('ABC')}>Cancel</Button>
+        <Button
+          onClick={() => { props.setVisibleChart(false) }}>
+          Cancel
+        </Button>
       </ButtonGroup>
     </>
   );
-}
+})
 
 function Contents() {
   const [timePeriod, setTimePeriod] = useState("Year-to-Year");
@@ -287,6 +274,7 @@ function Contents() {
   const [factorRegression, setFactorRegression] = useState("No");
   const [benchMark, setBenchMark] = useState("None");
   const [portfolioNames, setPortfolioNames] = useState("Default");
+  const [visibleChart, setVisibleChart] = useState(false);
 
   // Portfolio Assets 配列を追加すること前提にしてどう実装するか？
   // const [portfolioAssets, setPortfolioAssets] = useState("none");
@@ -296,6 +284,7 @@ function Contents() {
   return (
     <>
       <div className="Contents">
+        {visibleChart ? console.log("hello") : console.log("huga")}
         <Explanation />
 
         <TimePeriodBox setTimePeriod={setTimePeriod} />
@@ -327,6 +316,7 @@ function Contents() {
           factorRegression={factorRegression}
           benchMark={benchMark}
           portfolioNames={portfolioNames}
+          setVisibleChart={setVisibleChart}
         />
       </div>
     </>
