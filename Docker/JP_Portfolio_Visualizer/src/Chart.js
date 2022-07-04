@@ -20,7 +20,7 @@ function Chart() {
   };
 
   return (
-    <div className="App">
+    <div className="Chart">
       <div>
         <button onClick={changeData}>Click</button>
       </div>
