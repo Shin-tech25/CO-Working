@@ -50,7 +50,7 @@
   --fontSize-1: 1rem;
   --fontSize-2: 1.2rem;
   --fontSize-3: 1.44rem;
-  --fontSize-4: 1.728rem;
+  --fontSize-4: 1.44rem;
   --fontSize-5: 2.074rem;
   --fontSize-6: 2.488rem;
   --fontSize-7: 2.986rem;
@@ -125,10 +125,30 @@ h1 {
 
 h2 {
   font-size: var(--fontSize-5);
+  position: relative;
+  padding: 1.5rem 1rem;
+}
+
+h2:after {
+  font-size: var(--fontSize-5);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  content: '';
+  background-image: -webkit-repeating-linear-gradient(135deg, #000, #000 1px, transparent 2px, transparent 5px);
+  background-image: repeating-linear-gradient(-45deg, #000, #000 1px, transparent 2px, transparent 5px);
+  background-size: 7px 7px;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 h3 {
   font-size: var(--fontSize-4);
+  padding: 0.4rem 1.5rem;
+  border-bottom: 3px solid #000;
+  background: #f4f4f4;
 }
 
 h4 {
