@@ -139,5 +139,12 @@ module.exports = {
         noInlineHighlight: false
       }
     },
+    {
+      resolve: `@isamrish/gatsby-plugin-google-adsense`,
+      options: {
+        googleAdClientId: `ca-pub-?????????????????`,
+        head: true,
+      },
+    },
   ],
 }
