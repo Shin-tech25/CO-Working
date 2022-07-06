@@ -1,7 +1,7 @@
 ---
-title: Hello World
-date: "2015-05-01T22:12:03.284Z"
-description: "Hello World"
+title: メンテナンスしやすいAnsiblePlaybookの書き方
+date: "2022-07-06T11:29"
+description: "メンテナンスしやすいAnsiblePlaybookの書き方"
 ---
 
 This is my first post on my new fake blog! How exciting!
