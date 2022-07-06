@@ -3,5 +3,6 @@
 
 # npmプロジェクト開発
 node_modules/
+.cache
 #public/**
 #!public/index.html
