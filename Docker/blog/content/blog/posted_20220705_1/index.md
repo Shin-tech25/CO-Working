@@ -4,228 +4,121 @@ date: "2022-07-06T11:29"
 description: "メンテナンスしやすいAnsiblePlaybookの書き方"
 ---
 
-This is my first post on my new fake blog! How exciting!
+このページでは、保守的な Playbook の書き方、冪等性などをしっかりと考慮した Playbook や tips を紹介しています。シンプルでクリーンな Playbook を作成しましょう。
 
-I'm sure I'll write a lot more interesting things in the future.
+Ansible は Red Hat 社により開発されているサーバプロビジョニング・ツールです。Linux を始めとして、Windows、Cisco 機器などに対しても設定変更を行うことができます。汎用性が高いことがメリットです。
 
-Oh, and here's a great quote from this Wikipedia on
-[salted duck eggs](https://en.wikipedia.org/wiki/Salted_duck_egg).
+一方、設計段階で Playbook( = Ansible 実行コード)の設計方針をしっかりと決めなければ、Playbook と処理の対応関係が次第に分かりづらくなり、保守に時間がかかるコードを量産してしまうことに繋がります。
 
-> A salted duck egg is a Chinese preserved food product made by soaking duck
-> eggs in brine, or packing each egg in damp, salted charcoal. In Asian
-> supermarkets, these eggs are sometimes sold covered in a thick layer of salted
-> charcoal paste. The eggs may also be sold with the salted paste removed,
-> wrapped in plastic, and vacuum packed. From the salt curing process, the
-> salted duck eggs have a briny aroma, a gelatin-like egg white and a
-> firm-textured, round yolk that is bright orange-red in color.
+業務で実際に複雑な Playbook を見てきました。見ただけでは実際に何をする処理なのか分かりづらく、ミスの温床になります。
 
-![Chinese Salty Egg](./salty_egg.jpg)
+そういった Playbook を作らないためにどうしたら良いか。以下に記載しました。
 
-You can also write code blocks here!
+## 概要
 
-```js
-const saltyDuckEgg = "chinese preserved food product"
+保守的な Playbook を考える上でも観点はいくつかあります。
+その中でも特に重要な観点である、以下の 3 つ:
+
+- トップダウン設計
+- ドライランチェック
+- 冪等性
+- 変数の設計
+
+について挙げていきます。
+
+### トップダウン設計
+
+Playbook の設計で最も重視すべきなのがこのトップダウン設計です。
+
+- site.yml
+- 各種 Playbook
+- role
+
+この順番に Playbook を記述していきます。実際の処理(Task)は、role にだけ記述します。`site.yml`や Playbook には、対応関係のみを記述します。こうすることで、メンテナンスしやすくなります。
+
+`site.yml`は以下のように、Playbook を`import_playbook`により import します。
+
+```YAML
+---
+- name: Linuxの共通設定(all)
+  import_playbook: linux-common.yml
+
+- name: Manager 用の設定
+  import_playbook: manager.yml
+
+- name: Staging用の設定
+  import_playbook: staging.yml
+
+- name: Production用の設定
+  import_playbook: production.yml
 ```
 
-| Number | Title                                    | Year |
-| :----- | :--------------------------------------- | ---: |
-| 1      | Harry Potter and the Philosopher’s Stone | 2001 |
-| 2      | Harry Potter and the Chamber of Secrets  | 2002 |
-| 3      | Harry Potter and the Prisoner of Azkaban | 2004 |
+各種 Playbook は以下のように、`role` を用いて処理を記述していきます。なお、`role`は`roles`の下にネストして、`tags`を付与します。
+このようにすることで、`role`の局所的使用を可能にします。
 
-[View raw (TEST.md)](https://raw.github.com/adamschwartz/github-markdown-kitchen-sink/master/README.md)
+```YAML
+---
+- name: Linux の共通設定用の Playbook
+  hosts: linux
+  become: true
+  gather_facts: true
 
-This is a paragraph.
+  roles:
+  # ホスト名変更
+  - role: change_hostname
+    tags: change_hostname
 
-    This is a paragraph.
+  # 共通パッケージインストール
+  - role: linux_common_packages
+    tags: linux_common_packages
 
-# Header 1
+  # firewalld 有効化と設定
+  - role: firewalld_setup
+    tags: firewalld_setup
 
-## Header 2
+  # sshd 有効化と設定
+  - role: sshd
+    tags: sshd
 
-    Header 1
-    ========
+  # docker インストール
+  - role: install_docker
+    tags: install_docker
 
-    Header 2
-    --------
-
-# Header 1
-
-## Header 2
-
-### Header 3
-
-#### Header 4
-
-##### Header 5
-
-###### Header 6
-
-    # Header 1
-    ## Header 2
-    ### Header 3
-    #### Header 4
-    ##### Header 5
-    ###### Header 6
-
-# Header 1
-
-## Header 2
-
-### Header 3
-
-#### Header 4
-
-##### Header 5
-
-###### Header 6
-
-    # Header 1 #
-    ## Header 2 ##
-    ### Header 3 ###
-    #### Header 4 ####
-    ##### Header 5 #####
-    ###### Header 6 ######
-
-> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
-
-    > Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
-
-> ## This is a header.
->
-> 1. This is the first list item.
-> 2. This is the second list item.
->
-> Here's some example code:
->
->     Markdown.generate();
-
-    > ## This is a header.
-    > 1. This is the first list item.
-    > 2. This is the second list item.
-    >
-    > Here's some example code:
-    >
-    >     Markdown.generate();
-
-- Red
-- Green
-- Blue
-
-* Red
-* Green
-* Blue
-
-- Red
-- Green
-- Blue
-
-```markdown
-- Red
-- Green
-- Blue
-
-* Red
-* Green
-* Blue
-
-- Red
-- Green
-- Blue
+  # SELinux 無効化と必要なら再起動
+  - role: selinux
+    tags: selinux
 ```
 
-- `code goes` here in this line
-- **bold** goes here
+### ドライランチェック
 
-```markdown
-- `code goes` here in this line
-- **bold** goes here
-```
+### 冪等性
 
-1. Buy flour and salt
-1. Mix together with water
-1. Bake
+### 変数の設計
 
-```markdown
-1. Buy flour and salt
-1. Mix together with water
-1. Bake
-```
+## Playbook
 
-1. `code goes` here in this line
-1. **bold** goes here
+### Playbook の総本山 site.yml
 
-```markdown
-1. `code goes` here in this line
-1. **bold** goes here
-```
+### 役割単位で Playbook を設計する
 
-Paragraph:
+### role に実際の処理を書く
 
-    Code
+### role はタグ付けし、局所的運用を可能にする
 
-<!-- -->
+## Inventory の設計
 
-    Paragraph:
+### YAML 形式での Inventory 構成
 
-        Code
+### host_vars, group_vars
 
----
+## role の書き方
 
----
+### 車輪の再発明を防ぐ!Ansible-Galaxy
 
----
+## リファクタリング
 
----
+## リンク
 
----
+### 内部リンク
 
-    * * *
-
-    ***
-
-    *****
-
-    - - -
-
-    ---------------------------------------
-
-This is [an example](http://example.com "Example") link.
-
-[This link](http://example.com) has no title attr.
-
-This is [an example][id] reference-style link.
-
-[id]: http://example.com "Optional Title"
-
-    This is [an example](http://example.com "Example") link.
-
-    [This link](http://example.com) has no title attr.
-
-    This is [an example] [id] reference-style link.
-
-    [id]: http://example.com "Optional Title"
-
-_single asterisks_
-
-_single underscores_
-
-**double asterisks**
-
-**double underscores**
-
-    *single asterisks*
-
-    _single underscores_
-
-    **double asterisks**
-
-    __double underscores__
-
-This paragraph has some `code` in it.
-
-    This paragraph has some `code` in it.
-
-![Alt Text](https://placehold.it/200x50 "Image Title")
-
-    ![Alt Text](https://placehold.it/200x50 "Image Title")
+### 参考
