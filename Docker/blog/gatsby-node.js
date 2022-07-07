@@ -63,7 +63,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   paginate({
     createPage,
     items: posts,
-    itemsPerPage: 8,
+    itemsPerPage: 10,
     component: path.resolve(`./src/templates/index.js`),
     pathPrefix: ({ pageNumber }) => (pageNumber === 0 ? "/" : "/page"),
   });
