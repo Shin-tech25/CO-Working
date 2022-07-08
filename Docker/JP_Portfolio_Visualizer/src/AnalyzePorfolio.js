@@ -5,6 +5,8 @@ import * as d3 from "d3";
 
 import data_hoge from './csv/hoge.csv';
 import data_huga from './csv/huga.csv';
+import data_7203_2021 from './csv/2021_トヨタ自動車.csv';
+import data_7203_2022 from './csv/2022_トヨタ自動車.csv';
 
 function AnalyzePortfolio(props) {
   return(
@@ -14,13 +16,8 @@ function AnalyzePortfolio(props) {
           onClick={() => {
             props.setVisibleChart(true);
 
-            d3.csv(data_hoge, function (data, i) {
-              return {
-                name: i + "_" + data.name,
-              };
-            }).then(function (data) {
+            d3.csv(data_7203_2021).then(function (data) {
               console.log(data);
-              // グラフを描画
             });
 
           }}>
@@ -29,14 +26,11 @@ function AnalyzePortfolio(props) {
         <Button
           onClick={() => {
             props.setVisibleChart(false);
-            d3.csv(data_huga, function (data, i) {
-              return {
-                name: i + "_" + data.name,
-              };
-            }).then(function (data) {
+
+            d3.csv(data_7203_2022).then(function (data) {
               console.log(data);
-              // グラフを描画
             });
+
           }}>
           Cancel
         </Button>
