@@ -1,41 +1,56 @@
-import React, { useState } from "react";
-import * as d3 from "d3";
 
-// 作成したPieグラフ
-import Pie from "./Pie";
+import React from "react";
+import PropTypes from "prop-types";
 
-function Chart() {
+import { scaleTime } from "d3-scale";
+import { utcDay } from "d3-time";
 
-  const [width, height, innerRadius, outerRadius] = [200, 200, 60, 100];
+import { ChartCanvas, Chart } from "react-stockcharts";
+import { CandlestickSeries } from "react-stockcharts/lib/series";
+import { XAxis, YAxis } from "react-stockcharts/lib/axes";
+import { fitWidth } from "react-stockcharts/lib/helper";
+import { last, timeIntervalBarWidth } from "react-stockcharts/lib/utils";
 
-  // ボタンをクリックした時、ランダムなデータを生成する
-  const generateData = (value, length = 5) =>
-    d3.range(length).map((_item, index) => ({
-      date: index,
-      value: value === null || value === undefined ? Math.random() * 100 : value
-    }));
-  const [data, setData] = useState(generateData());
-  const changeData = () => {
-    setData(generateData());
-  };
+class CandleStickChart extends React.Component {
+	render() {
+		const { type, width, data, ratio } = this.props;
+		const xAccessor = d => d.date;
+		const xExtents = [
+			xAccessor(last(data)),
+			xAccessor(data[data.length - 100])
+		];
+		return (
+			<ChartCanvas height={400}
+					ratio={ratio}
+					width={width}
+					margin={{ left: 50, right: 50, top: 10, bottom: 30 }}
+					type={type}
+					seriesName="MSFT"
+					data={data}
+					xAccessor={xAccessor}
+					xScale={scaleTime()}
+					xExtents={xExtents}>
 
-  return (
-    <div className="Chart">
-      <div>
-        <button onClick={changeData}>Click</button>
-      </div>
-      <div>
-        <h2 className="label">React Hook</h2>
-        <Pie
-          data={data}
-          width={width}
-          height={height}
-          innerRadius={innerRadius}
-          outerRadius={outerRadius}
-        />
-      </div>
-    </div>
-  );
+				<Chart id={1} yExtents={d => [d.high, d.low]}>
+					<XAxis axisAt="bottom" orient="bottom" ticks={6}/>
+					<YAxis axisAt="left" orient="left" ticks={5} />
+					<CandlestickSeries width={timeIntervalBarWidth(utcDay)}/>
+				</Chart>
+			</ChartCanvas>
+		);
+	}
 }
 
-export default Chart;
+CandleStickChart.propTypes = {
+	data: PropTypes.array.isRequired,
+	width: PropTypes.number.isRequired,
+	ratio: PropTypes.number.isRequired,
+	type: PropTypes.oneOf(["svg", "hybrid"]).isRequired,
+};
+
+CandleStickChart.defaultProps = {
+	type: "svg",
+};
+CandleStickChart = fitWidth(CandleStickChart);
+
+export default CandleStickChart;
