@@ -1,6 +1,6 @@
 import './App.css'
 import React, { useState } from 'react';
-import Chart from './Chart';
+import ChartComponent from './ChartComponent';
 import Contents from './Contents';
 import AnalyzePortfolio from './AnalyzePorfolio';
 
@@ -25,7 +25,9 @@ function App() {
   const [visibleChart, setVisibleChart] = useState(false);
   return (
     <>
-      {visibleChart ? <Chart /> : <div class="Chart"></div>}
+      {visibleChart ? <ChartComponent /> : <div class="Chart"></div>}
+
+      {/* <ChartComponent /> */}
       <Contents
         timePeriod={timePeriod}
         setTimePeriod={setTimePeriod}
@@ -69,6 +71,7 @@ function App() {
         benchMark={benchMark}
         portfolioNames={portfolioNames}
         setVisibleChart={setVisibleChart}
+
       />
     </>
   )
