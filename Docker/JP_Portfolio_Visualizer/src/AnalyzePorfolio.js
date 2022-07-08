@@ -14,13 +14,8 @@ function AnalyzePortfolio(props) {
           onClick={() => {
             props.setVisibleChart(true);
 
-            d3.csv(data_hoge, function (data, i) {
-              return {
-                name: i + "_" + data.name,
-              };
-            }).then(function (data) {
+            d3.csv(data_hoge).then(function (data) {
               console.log(data);
-              // グラフを描画
             });
 
           }}>
@@ -29,14 +24,11 @@ function AnalyzePortfolio(props) {
         <Button
           onClick={() => {
             props.setVisibleChart(false);
-            d3.csv(data_huga, function (data, i) {
-              return {
-                name: i + "_" + data.name,
-              };
-            }).then(function (data) {
+
+            d3.csv(data_huga).then(function (data) {
               console.log(data);
-              // グラフを描画
             });
+
           }}>
           Cancel
         </Button>
