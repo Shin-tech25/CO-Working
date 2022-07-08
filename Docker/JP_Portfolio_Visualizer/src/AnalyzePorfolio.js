@@ -3,6 +3,9 @@ import Button from '@material-ui/core/Button';
 import React from 'react';
 import * as d3 from "d3";
 
+import data_hoge from './csv/hoge.csv';
+import data_huga from './csv/huga.csv';
+
 function AnalyzePortfolio(props) {
   return(
     <>
@@ -11,8 +14,12 @@ function AnalyzePortfolio(props) {
           onClick={() => {
             props.setVisibleChart(true);
 
-            d3.csv("./csv/hoge.csv").then(function (d) {
-              console.log(d);
+            d3.csv(data_hoge, function (data, i) {
+              return {
+                name: i + "_" + data.name,
+              };
+            }).then(function (data) {
+              console.log(data);
               // グラフを描画
             });
 
@@ -22,7 +29,7 @@ function AnalyzePortfolio(props) {
         <Button
           onClick={() => {
             props.setVisibleChart(false);
-            d3.csv("./csv/huga.csv", function (data, i) {
+            d3.csv(data_huga, function (data, i) {
               return {
                 name: i + "_" + data.name,
               };
