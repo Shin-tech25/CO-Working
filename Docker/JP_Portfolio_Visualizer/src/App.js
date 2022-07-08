@@ -27,7 +27,6 @@ function App() {
     <>
       {visibleChart ? <ChartComponent /> : <div class="Chart"></div>}
 
-      {/* <ChartComponent /> */}
       <Contents
         timePeriod={timePeriod}
         setTimePeriod={setTimePeriod}

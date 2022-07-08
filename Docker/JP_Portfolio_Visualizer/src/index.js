@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import Header from './Header';
-import Contents from './Contents';
 import Footer from './Footer';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
