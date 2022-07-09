@@ -19,10 +19,7 @@ function parseData(parse) {
 const parseDate = timeParse("%Y-%m-%d");
 
 export function getData() {
-	const promiseMSFT = fetch("http://localhost/stockdata/test.tsv", {
-		mode: 'cors',
-		credentials: 'include'
-	})
+	const promiseMSFT = fetch("http://localhost/stockdata/test.tsv")
 		.then(response => response.text())
 		.then(data => tsvParse(data, parseData(parseDate)))
 	return promiseMSFT;
